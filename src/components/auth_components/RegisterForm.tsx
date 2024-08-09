@@ -58,7 +58,9 @@ const RegisterForm = () => {
           </Box>
         ))}
         <Box className="mt-5">
-          <Button className="w-full">Sign Up</Button>
+          <Button className="w-full" style={{ fontFamily: "eczar" }}>
+            Sign Up
+          </Button>
         </Box>
       </form>
     </Box>

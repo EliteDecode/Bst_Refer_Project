@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Calistoga&family=Eczar:wght@400..800&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -176,7 +176,7 @@
   transition: all 0.8s ease;
 }
 .header {
-  width: 84%;
+  width: 86%;
 }
 
 .sidebar {
@@ -208,23 +208,6 @@
   }
 }
 
-.sidebarx::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
-}
-
-.sidebarx::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Track color */
-}
-
-.sidebarx::-webkit-scrollbar-thumb {
-  background: #c4b5ce28; /* Thumb color */
-}
-
-.sidebarx::-webkit-scrollbar-thumb:hover {
-  background: #c4b5ce62; /* Thumb color on hover */
-}
-
 @media screen and (min-width: 831px) and (max-width: 1245px) {
   .sidebar {
     width: 25%;
@@ -233,4 +216,10 @@
   .header {
     width: 75%;
   }
+}
+
+/* Profile */
+.profile-header {
+  background: url("./assets/images/dashboard/profilebg.jpg");
+  background-size: contain;
 }

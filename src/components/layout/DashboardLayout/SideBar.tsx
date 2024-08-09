@@ -58,9 +58,11 @@ const Sidebar = ({ setIsSidebar, isSidebar }: DashboardNavbarProps) => {
         <Box className="mt-1">
           {sideBarLinks.map((item, index) => {
             return (
-              <Box className="px-2 py-1 mt-2" key={index}>
+              <Box className="px-2 py-1" key={index}>
                 <Box>
-                  <Typography className="text-black font-black mb-1  text-[12px] uppercase">
+                  <Typography
+                    className="text-black font-black mb-1  text-[12px] uppercase"
+                    style={{ fontFamily: "eczar" }}>
                     {item.title}
                   </Typography>
                 </Box>
@@ -70,13 +72,18 @@ const Sidebar = ({ setIsSidebar, isSidebar }: DashboardNavbarProps) => {
                     key={index2}
                     onClick={handleSidebarToggle}
                     to={item2.link}
-                    className={`flex items-center space-x-2 p-2 mt-1 rounded-lg ${
+                    className={`flex items-center space-x-2 p-2 mt-0.5 rounded-lg ${
                       location.pathname.includes(item2.link)
-                        ? " bg-gray-100"
+                        ? " bg-[#6666cc44] text-primary"
                         : "bg-[#fff] hover:bg-gray-100 border-[#fafafa]"
                     }     cursor-pointer`}>
                     {item2.Icon}
-                    <Typography className=" sm:text-[10px] text-[13px] ">
+                    <Typography
+                      className={`${
+                        location.pathname.includes(item2.link)
+                          ? " text-primary font-bold"
+                          : "text-gray-400"
+                      }  sm:text-[12px] text-[17px] `}>
                       {item2.Title}
                     </Typography>
                   </Link>

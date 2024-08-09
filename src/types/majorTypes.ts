@@ -47,3 +47,32 @@ export type DashboardNavbarProps = {
   setIsSidebar: (value: boolean) => void;
   isSidebar: boolean;
 };
+
+//InfoCardDisplay Dashboard Props
+export type InfoCardDisplayProps = {
+  title: string;
+  description: number | string;
+  link: string;
+  buttonText: string;
+  image: string;
+};
+
+//Users Props
+export type UserProps = {
+  fullname: string;
+  email: string;
+  phone: string;
+  address: string;
+  status: "pending" | "successful";
+  course: string;
+};
+
+//Transaction Props
+export type TransactionProps = {
+  fullname: string;
+  email: string;
+  phone: string;
+  amount: number;
+  date: string;
+  status: "pending" | "paid";
+};

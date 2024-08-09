@@ -39,3 +39,33 @@ export const signInInputs = [
     placeholder: "Enter your secured password",
   },
 ];
+
+export const forgotPasswordInputs = [
+  {
+    id: "email",
+    label: "Email",
+    type: "email",
+    placeholder: "Enter a valid email address",
+  },
+];
+
+export const ChangePasswordInputs = [
+  {
+    id: "currentPassword",
+    label: "Current Password",
+    type: "password",
+    placeholder: "Enter your current password",
+  },
+  {
+    id: "newPassword",
+    label: "New Password",
+    type: "password",
+    placeholder: "Enter your secured password",
+  },
+  {
+    id: "confirmPassword",
+    label: "Confirm Password",
+    type: "password",
+    placeholder: "Confirm your password",
+  },
+];

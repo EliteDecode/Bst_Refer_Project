@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,39 +6,47 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import { Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Typography } from "antd";
-
 import AreaChartComp from "./AreaChartComp";
-import { usersData } from "@/utils/dashboardContents";
+import { usersDataChart } from "@/utils/dashboardContents";
+import { InfoCardDisplayProps } from "@/types/majorTypes";
+
+import usersIcon from "@/assets/icons/team.png";
+import registeredUsersIcon from "@/assets/icons/document.png";
+import walletIcon from "@/assets/icons/wallet.png";
+import settingsIcon from "@/assets/icons/settings.png";
 
 const InfoCardDisplay = () => {
-  const HomeCardContents = [
+  const HomeCardContents: InfoCardDisplayProps[] = [
     {
-      title: "Total Teachers",
+      title: "All Users",
       description: 0,
-      buttonText: "View Teachers",
+      buttonText: "View All Users",
       link: "/dashboard/teachers",
+      image: usersIcon,
     },
     {
-      title: "Total Teachers",
+      title: "Registered Users",
       description: 0,
-      buttonText: "View Teachers",
+      buttonText: "View Registered Users",
       link: "/dashboard/teachers",
+      image: registeredUsersIcon,
     },
     {
-      title: "Total Student",
-      description: 5,
-      buttonText: "View Students",
+      title: "Wallet",
+      description: (50000).toLocaleString(),
+      buttonText: "View Wallet",
       link: "/dashboard/students",
+      image: walletIcon,
     },
     {
-      title: "Total Parent",
+      title: "Settings",
       description: 7,
-      buttonText: "View Parents",
+      buttonText: "View Settings",
       link: "/dashboard/parents",
+      image: settingsIcon,
     },
   ];
   return (
@@ -50,19 +57,25 @@ const InfoCardDisplay = () => {
             <Card className="border-none">
               <Box className="flex justify-between items-center">
                 <CardHeader>
-                  <CardTitle className="text-[12px]">{item.title}</CardTitle>
+                  <CardTitle
+                    className="text-[12px]"
+                    style={{ fontFamily: "eczar" }}>
+                    {item.title}
+                  </CardTitle>
                   <CardDescription className="text-primary font-semibold">
                     {item.description}
                   </CardDescription>
                 </CardHeader>
-                {/* <Box className="p-6">
+                <Box className="p-6">
                   <img src={item.image} alt=" image" className="w-[32px]" />
-                </Box> */}
+                </Box>
               </Box>
 
               <CardFooter>
                 <Link to={item?.link}>
-                  <Button size="sm" variant="secondary">
+                  <Button
+                    size="sm"
+                    className="bg-gray-100 shadow-none text-black">
                     {item.buttonText}
                   </Button>
                 </Link>
@@ -75,10 +88,16 @@ const InfoCardDisplay = () => {
       <Grid container className="mt-5">
         <Grid item xs={12} sm={12} md={12}>
           <Box className="sm:h-[55vh] h-[45vh] py-5 bg-white rounded-md">
-            <Typography className="text-[14px] p-5 mb-5 font-semibold uppercase text-primary">
+            <Typography
+              className="text-[14px] p-5 mb-5 font-semibold uppercase text-primary"
+              style={{ fontFamily: "eczar" }}>
               Overview of Users
             </Typography>
-            <AreaChartComp data={usersData} stroke="#87CEEB" fill="#87CEEB" />
+            <AreaChartComp
+              data={usersDataChart}
+              stroke="#87CEEB"
+              fill="#87CEEB"
+            />
           </Box>
         </Grid>
       </Grid>

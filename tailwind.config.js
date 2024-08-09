@@ -23,6 +23,7 @@ module.exports = {
         raleway: ["Raleway"],
         oswald: ["Oswald"],
         calistoga: ["Calistoga"],
+        eczar: ["Eczar"],
       },
       colors: {
         border: "hsl(var(--border))",

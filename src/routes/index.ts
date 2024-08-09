@@ -13,3 +13,4 @@ export const Settings = lazy(() => import("../pages/Dashboard/Settings"));
 export const Users = lazy(() => import("../pages/Dashboard/Users"));
 export const Help = lazy(() => import("../pages/Dashboard/Help"));
 export const Wallet = lazy(() => import("../pages/Dashboard/Wallet"));
+export const AddUser = lazy(() => import("../pages/Dashboard/AddUser"));

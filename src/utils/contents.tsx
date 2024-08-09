@@ -2,23 +2,14 @@ import {
   FaqProps,
   HowItWorksProps,
   NavbarLinksProps,
+  ServicesProps,
   TestimonialsProps,
 } from "@/types/majorTypes";
-import { ServicesProps } from "@/types/commonTypes";
-
-//Navbar Icons
-import industriesImage from "@/assets/images/navbar/navbar_industries.jpg";
-import companyImage from "@/assets/images/navbar/navbar_company.jpg";
-import trainingImage from "@/assets/images/navbar/navbar_training.jpg";
-import servicesImage from "@/assets/images/navbar/navbar_services.jpg";
 
 //Services Icons
 import softwareImage from "@/assets/images/services/software.png";
 import consultationImage from "@/assets/images/services/consultion.png";
-import techtrainingImage from "@/assets/images/services/training.png";
-import workspaceImage from "@/assets/images/services/workspace.png";
 import digitalMarketingImage from "@/assets/images/services/digital-marketting.png";
-import projectManagementImage from "@/assets/images/services/management.png";
 
 //Testimonial Images
 import testimonial1 from "@/assets/images/testimonials/testimonial-1.jpeg";

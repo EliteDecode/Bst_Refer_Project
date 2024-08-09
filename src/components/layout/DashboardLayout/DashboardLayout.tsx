@@ -10,7 +10,7 @@ const DashboardLayout = () => {
   return (
     <div>
       <Box
-        className={`flex flex-wrap h-screen overflow-y-scroll ${
+        className={`flex flex-wrap h-screen  ${
           isSidebar ? "overflow-y-hidden" : "overflow-y-scroll"
         }`}>
         <Box
@@ -30,7 +30,7 @@ const DashboardLayout = () => {
             isSidebar ? "header" : "sm:w-[100%]"
           } header transit  bg-white w-[100%]`}>
           <Header setIsSidebar={setIsSidebar} isSidebar={isSidebar} />
-          <Box className=" sm:p-5 p-2 ">
+          <Box className=" sm:p-5 p-2 h-screen w-full overflow-y-scroll bg-[#fafafa] ">
             <Outlet />
           </Box>
         </Box>

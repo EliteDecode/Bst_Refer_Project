@@ -15,6 +15,7 @@ import {
   Register,
   Settings,
   Wallet,
+  AddUser,
 } from "./routes";
 import { AuthLayout, DashboardLayout, Layout } from "./components/layout";
 
@@ -75,6 +76,10 @@ export default function App() {
               element: <Users />,
             },
             {
+              path: "add-user",
+              element: <AddUser />,
+            },
+            {
               path: "wallet",
               element: <Wallet />,
             },
@@ -91,6 +96,11 @@ export default function App() {
               element: <Help />,
             },
           ],
+        },
+
+        {
+          path: "*",
+          element: <Navigate to="/dashboard/home" />,
         },
       ])}
     />
