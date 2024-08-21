@@ -1,20 +1,20 @@
-import { signInInputs } from "@/utils/authContents";
+import { signUpInputs } from "@/utils/authContents";
 import { Box, InputAdornment, IconButton } from "@mui/material";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Button } from "../ui/button";
-import useLoginForm from "@/hooks/form-hooks/useLoginForm";
+import useRegisterForm from "@/hooks/form-hooks/useRegisterForm";
 import { Typography } from "antd";
+import ButtonSpinners from "@/helpers/ButtonSpinners";
 
-const LoginForm = () => {
-  const { formik, handleTogglePasswordVisibility, showPassword } =
-    useLoginForm();
-
+const RegisterForm = () => {
+  const { formik, handleTogglePasswordVisibility, showPassword, isLoading } =
+    useRegisterForm();
   return (
-    <Box className="space-y-2 py-2">
+    <Box className=" py-2">
       <form onSubmit={formik.handleSubmit}>
-        {signInInputs?.map((item, index) => (
+        {signUpInputs?.map((item, index) => (
           <Box key={index}>
             <Label className="text-[11px] text-[#0009]" htmlFor={item.id}>
               {item?.label}
@@ -48,10 +48,10 @@ const LoginForm = () => {
                 )
               }
             />
-            <Box>
+            <Box className="relative">
               {formik.touched[item.id as keyof typeof formik.touched] &&
                 formik.errors[item.id as keyof typeof formik.errors] && (
-                  <Typography className="text-[10px] text-red-600 mt-1">
+                  <Typography className="text-[10px]  text-red-600 ">
                     {formik.errors[item.id as keyof typeof formik.errors]} (*)
                   </Typography>
                 )}
@@ -60,10 +60,10 @@ const LoginForm = () => {
         ))}
         <Box className="mt-5">
           <Button
+            disabled={isLoading}
             className="w-full"
-            type="submit"
             style={{ fontFamily: "eczar" }}>
-            Login
+            {isLoading ? <ButtonSpinners /> : "  Sign Up"}
           </Button>
         </Box>
       </form>
@@ -71,4 +71,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

@@ -3,9 +3,23 @@ import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./SideBar";
 import Header from "./Header";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { useEffect } from "react";
+import { reset } from "@/services/features/auth/authSlice";
+import { AppDispatch } from "@/store";
 
 const DashboardLayout = () => {
   const { isSidebar, setIsSidebar } = useHandleResizeSidebar();
+  const { isSuccess, message } = useSelector((state: any) => state.auth);
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    if (isSuccess && message == "Login Successfully") {
+      toast.success("Login Successfull");
+      dispatch(reset());
+    }
+  }, [isSuccess]);
 
   return (
     <div>
@@ -30,7 +44,7 @@ const DashboardLayout = () => {
             isSidebar ? "header" : "sm:w-[100%]"
           } header transit  bg-white w-[100%]`}>
           <Header setIsSidebar={setIsSidebar} isSidebar={isSidebar} />
-          <Box className=" sm:p-5 p-2 h-screen w-full overflow-y-scroll bg-[#fafafa] ">
+          <Box className=" p-5 h-screen w-full overflow-y-scroll bg-[#fafafa] ">
             <Outlet />
           </Box>
         </Box>

@@ -1,12 +1,36 @@
 import { loginSchema } from "@/lib/schemas";
+import { LoginUser, reset } from "@/services/features/auth/authSlice";
+import { AppDispatch } from "@/store";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const useLoginForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  const { isLoading, isSuccess, isError, message } = useSelector(
+    (state: any) => state.auth
+  );
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    if (isSuccess && message === "Login successfully") {
+      setTimeout(() => {
+        dispatch(reset());
+      }, 2000);
+    }
+
+    if (isError && message) {
+      toast.error(message);
+      setTimeout(() => {
+        dispatch(reset());
+      }, 2000);
+    }
+  }, [isSuccess, isError, message, dispatch]);
 
   const formik = useFormik({
     initialValues: {
@@ -15,11 +39,16 @@ const useLoginForm = () => {
     },
     validationSchema: loginSchema,
     onSubmit: (values) => {
-      console.log(values);
+      dispatch(LoginUser(values));
     },
   });
 
-  return { formik, handleTogglePasswordVisibility, showPassword };
+  return {
+    formik,
+    handleTogglePasswordVisibility,
+    showPassword,
+    isLoading,
+  };
 };
 
 export default useLoginForm;

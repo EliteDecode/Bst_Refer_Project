@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const useHandleResizeSidebar = () => {
   const [isSidebar, setIsSidebar] = useState<boolean>(false);

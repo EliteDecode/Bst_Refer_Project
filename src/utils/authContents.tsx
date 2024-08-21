@@ -25,6 +25,21 @@ export const signUpInputs = [
   },
 ];
 
+export const resetPasswordInputs = [
+  {
+    id: "password",
+    label: "Password",
+    type: "password",
+    placeholder: "Enter your secured password",
+  },
+  {
+    id: "confirmPassword",
+    label: "Confirm Password",
+    type: "password",
+    placeholder: "Confirm your password",
+  },
+];
+
 export const signInInputs = [
   {
     id: "email",

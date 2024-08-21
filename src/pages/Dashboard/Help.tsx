@@ -1,5 +1,5 @@
 import { ComplaintForm } from "@/components/dashboard_components/forms/ComplaintForm";
-import Faqs from "@/components/home_components/Faq";
+import Faqs from "@/components/home/Faq";
 import { Box } from "@mui/material";
 import React from "react";
 

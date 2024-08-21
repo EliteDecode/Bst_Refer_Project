@@ -1,13 +1,12 @@
-import LoginForm from "@/components/auth_components/LoginForm";
-import SignUpOptions from "@/components/auth_components/SignUpOptions";
+import LoginForm from "@/components/auth/LoginForm";
 import { Box } from "@mui/material";
 import { Typography } from "antd";
 import { Link } from "react-router-dom";
 
-const login = () => {
+const Login = () => {
   return (
-    <Box className="sm:w-[26%] w-[90%] border-white m-auto rounded-lg bg-white  p-5 flex flex-col items-center justify-center">
-      <Box className="">
+    <Box className="sm:w-[26%] w-[95%] border-white m-auto rounded-lg bg-white  p-5 flex flex-col items-center justify-center">
+      <Box className="w-full">
         <Typography
           className="text-[22px] font-bold"
           style={{ fontFamily: "segoe ui" }}>
@@ -16,14 +15,22 @@ const login = () => {
         <Typography className="text-[20px] font-semibold -mt-1 text-[#acaba9]">
           Please login to your account
         </Typography>
-        <SignUpOptions />
+        {/* <SignUpOptions /> */}
         <LoginForm />
         <Box>
-          <Typography className="text-[14px]">
+          <Typography className="text-[11px]">
             Don't have an account?{" "}
             <Link to="/auth/register">
               <span className="text-primary hover:underline font-bold cursor-pointer">
                 Sign Up
+              </span>
+            </Link>
+          </Typography>
+          <Typography className="text-[11px]">
+            Forgot Password?{" "}
+            <Link to="/auth/forgot-password">
+              <span className="text-primary hover:underline font-bold cursor-pointer">
+                Forgot Password
               </span>
             </Link>
           </Typography>
@@ -33,4 +40,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

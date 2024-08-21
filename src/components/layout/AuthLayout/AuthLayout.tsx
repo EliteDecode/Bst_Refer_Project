@@ -5,13 +5,15 @@ import logo from "@/assets/images/Logo.png";
 
 const AuthLayout = () => {
   return (
-    <Box className="bg-[#fafafa] h-screen">
-      <Box className="px-8 sm:py-2 py-8">
+    <Box className="bg-[#e7e7e7] h-screen flex justify-center items-center ">
+      <Box className="px-8 absolute top-5 left-10 sm:py-2 py-8">
         <Link to="/">
-          <img src={logo} alt="Logo of BST" className="sm:w-[7%] w-[25%]" />
+          <img src={logo} alt="Logo of BST" className="sm:w-[12%] w-[25%]" />
         </Link>
       </Box>
-      <Outlet />
+      <Box className="w-full ">
+        <Outlet />
+      </Box>
     </Box>
   );
 };

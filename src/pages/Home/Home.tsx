@@ -1,12 +1,12 @@
-import Hero from "@/components/home_components/Hero";
+import Hero from "@/components/home/Hero";
 
-import Courses from "@/components/home_components/Courses";
-import Globe from "@/components/home_components/Globe";
-import Testimonials from "@/components/home_components/Testimonials";
-import HowItWorks from "@/components/home_components/HowItWorks";
-import HowMuchYouCanEarn from "@/components/home_components/HowMuchYouCanEarn";
-import Faqs from "@/components/home_components/Faq";
-import Footer from "@/components/home_components/Footer";
+import Courses from "@/components/home/Courses";
+import Globe from "@/components/home/Globe";
+import Testimonials from "@/components/home/Testimonials";
+import HowItWorks from "@/components/home/HowItWorks";
+import HowMuchYouCanEarn from "@/components/home/HowMuchYouCanEarn";
+import Faqs from "@/components/home/Faq";
+import Footer from "@/components/home/Footer";
 
 const Home = () => {
   return (

@@ -16,6 +16,9 @@ import {
   Settings,
   Wallet,
   AddUser,
+  ConfirmCode,
+  ForgotPassword,
+  ResetPassword,
 } from "./routes";
 import { AuthLayout, DashboardLayout, Layout } from "./components/layout";
 
@@ -26,8 +29,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
+import { useSelector } from "react-redux";
 
 export default function App() {
+  const { token } = useSelector((state: any) => state.auth);
   return (
     <RouterProvider
       router={createBrowserRouter([
@@ -49,7 +54,7 @@ export default function App() {
         //Authentication Routes
         {
           path: "auth",
-          element: <AuthLayout />,
+          element: token ? <Navigate to="/dashboard/home" /> : <AuthLayout />,
           children: [
             {
               path: "login",
@@ -59,13 +64,25 @@ export default function App() {
               path: "register",
               element: <Register />,
             },
+            {
+              path: "confirm",
+              element: <ConfirmCode />,
+            },
+            {
+              path: "forgot-password",
+              element: <ForgotPassword />,
+            },
+            {
+              path: "reset-password/:resetToken",
+              element: <ResetPassword />,
+            },
           ],
         },
 
         //Dashboard Routes
         {
           path: "dashboard",
-          element: <DashboardLayout />,
+          element: !token ? <Navigate to="/auth/login" /> : <DashboardLayout />,
           children: [
             {
               path: "home",

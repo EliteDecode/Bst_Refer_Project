@@ -1,13 +1,17 @@
-import { registrationSchema } from "@/lib/schemas";
-import { RegisterUser, reset } from "@/services/features/auth/authSlice";
+import { registrationSchema, resetPasswordSchema } from "@/lib/schemas";
+import {
+  RegisterUser,
+  reset,
+  ResetPassword,
+} from "@/services/features/auth/authSlice";
 import { AppDispatch } from "@/store";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const useRegisterForm = () => {
+const useResetPasswordForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleTogglePasswordVisibility = () => {
@@ -20,11 +24,13 @@ const useRegisterForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
+  const { resetToken } = useParams();
+
   useEffect(() => {
     if (isSuccess) {
       toast.success(message);
       dispatch(reset());
-      navigate("/auth/confirm");
+      navigate("/auth/login");
     }
 
     if (isError) {
@@ -37,18 +43,19 @@ const useRegisterForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      fullname: "",
-      email: "",
       password: "",
       confirmPassword: "",
+      token: "",
     },
-    validationSchema: registrationSchema,
+    validationSchema: resetPasswordSchema,
     onSubmit: (values) => {
-      dispatch(RegisterUser(values));
+      if (resetToken) {
+        dispatch(ResetPassword({ ...values, token: resetToken }));
+      }
     },
   });
 
   return { formik, handleTogglePasswordVisibility, showPassword, isLoading };
 };
 
-export default useRegisterForm;
+export default useResetPasswordForm;

@@ -18,6 +18,18 @@ export const registrationSchema = Yup.object().shape({
     .required("Confirm Password is required"),
 });
 
+export const resetPasswordSchema = Yup.object().shape({
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
+  confirmPassword: Yup.string()
+    .oneOf(
+      [Yup.ref("password"), null as unknown as string],
+      "Passwords must match"
+    )
+    .required("Confirm Password is required"),
+});
+
 export const loginSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
@@ -26,6 +38,12 @@ export const loginSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, "Password must be at least 8 characters")
     .required("Password is required"),
+});
+
+export const forgotPasswordSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
 });
 
 //AddUSer Schema
@@ -55,4 +73,10 @@ export const changePasswordSchema = Yup.object().shape({
       "Passwords must match"
     )
     .required("Confirm Password is required"),
+});
+
+export const confirmCodeSchema = Yup.object().shape({
+  pin: Yup.string()
+    .length(5, "Your one-time password must be 5 characters.")
+    .required("One-time password is required."),
 });

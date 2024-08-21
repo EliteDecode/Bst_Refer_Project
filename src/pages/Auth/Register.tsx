@@ -1,5 +1,4 @@
-import RegisterForm from "@/components/auth_components/RegisterForm";
-import SignUpOptions from "@/components/auth_components/SignUpOptions";
+import RegisterForm from "@/components/auth/RegisterForm";
 import { Box } from "@mui/material";
 import { Typography } from "antd";
 import { Link } from "react-router-dom";
@@ -7,7 +6,7 @@ import { Link } from "react-router-dom";
 const Register = () => {
   return (
     <Box className="sm:w-[26%] w-[90%] border-white -mt-4 m-auto rounded-lg bg-white  p-5 flex flex-col items-center justify-center">
-      <Box className="">
+      <Box className="w-full">
         <Typography
           className="text-[22px] font-bold"
           style={{ fontFamily: "segoe ui" }}>
@@ -16,7 +15,7 @@ const Register = () => {
         <Typography className="text-[20px] font-semibold -mt-1 text-[#acaba9]">
           Create an account with BST
         </Typography>
-        <SignUpOptions />
+        {/* <SignUpOptions /> */}
         <RegisterForm />
         <Box>
           <Typography className="text-[14px]">

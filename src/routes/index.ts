@@ -5,6 +5,11 @@ export const Home = lazy(() => import("../pages/Home/Home"));
 //Authentication Routes
 export const Login = lazy(() => import("../pages/Auth/Login"));
 export const Register = lazy(() => import("../pages/Auth/Register"));
+export const ConfirmCode = lazy(() => import("../pages/Auth/ConfirmCode"));
+export const ForgotPassword = lazy(
+  () => import("../pages/Auth/ForgotPassword")
+);
+export const ResetPassword = lazy(() => import("../pages/Auth/ResetPassword"));
 
 //Dashboard Routes
 export const Dashboard = lazy(() => import("../pages/Dashboard/Dashboard"));
