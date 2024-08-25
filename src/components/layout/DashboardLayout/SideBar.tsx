@@ -1,26 +1,14 @@
+import logo from "@/assets/images/Logo.png";
+import useSidebar from "@/hooks/useSidebar";
+import { DashboardNavbarProps } from "@/types/majorTypes";
+import { sideBarLinks } from "@/utils/dashboardContents";
+import { Close } from "@mui/icons-material";
 import { Box, IconButton } from "@mui/material";
 import { Typography } from "antd";
-import { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Close } from "@mui/icons-material";
-import { sideBarLinks } from "@/utils/dashboardContents";
-import logo from "@/assets/images/Logo.png";
-import { DashboardNavbarProps } from "@/types/majorTypes";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ setIsSidebar, isSidebar }: DashboardNavbarProps) => {
-  const location = useLocation();
-
-  const handleSidebarToggle = () => {
-    if (window.innerWidth < 767) {
-      setIsSidebar(false);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("resize", handleSidebarToggle);
-    return () => {
-      window.removeEventListener("resize", handleSidebarToggle);
-    };
-  }, []);
+  const { location, user, handleSidebarToggle } = useSidebar({ setIsSidebar });
 
   return (
     <Box
@@ -46,7 +34,7 @@ const Sidebar = ({ setIsSidebar, isSidebar }: DashboardNavbarProps) => {
           <Box className="mt-5 space-x-2 flex items-center px-4 py-2 bg-[#919EAB29]">
             <Box>
               <Typography className="font-bold text-gray-600">
-                Musa Ahmed
+                {user?.fullname}
               </Typography>
               <Typography className="text-[10px] text-gray-500 -mt-1">
                 User Admin

@@ -14,6 +14,7 @@ const useDashboardHeader = () => {
   const { isLoading, isError, isSuccess, message } = useSelector(
     (state: any) => state.auth
   );
+  const { user } = useSelector((state: any) => state.user);
 
   const handleLogout = () => {
     dispatch(LogoutUser());
@@ -31,7 +32,7 @@ const useDashboardHeader = () => {
     }
   }, [isSuccess, isError, message, dispatch]);
 
-  return { handleLogout, dashboardTitle, isLoading };
+  return { handleLogout, dashboardTitle, isLoading, user };
 };
 
 export default useDashboardHeader;

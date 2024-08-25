@@ -1,31 +1,36 @@
 import { Box } from "@mui/material";
-import profileImage from "@/assets/images/dashboard/gospelProfile.jpg";
 import { Typography } from "antd";
-import usersIcon from "@/assets/icons/team.png";
+import { useSelector } from "react-redux";
 import { Button } from "../ui/button";
+import { MdOutlineVerified } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const ProfileDetails = () => {
+  const { user } = useSelector((state: any) => state.user);
+
   return (
     <Box>
-      <Box className="flex items-center justify-center -mt-20">
-        <img
-          src={profileImage}
-          alt="profileImage"
-          className="rounded-full w-36 h-36"
-        />
-      </Box>
       <Box>
         <Typography className="text-center text-[20px] font-semibold mt-4">
-          John Samathanma
+          {user?.fullname}
         </Typography>
         <Typography className="text-center text-[13px]  text-gray-500">
-          @JohnSamathanma@gmail.com
+          @{user?.email}
         </Typography>
+        <Box className="text-center text-[13px]  flex items-center justify-center space-x-2 text-gray-500">
+          <span>Status</span> :{" "}
+          {!user?.isProfileUpdated ? (
+            <Box className="flex items-center justify-center space-x-1">
+              <span> Not Verified</span> <MdOutlineVerified color="red" />
+            </Box>
+          ) : (
+            <Box className="flex items-center justify-center space-x-1">
+              <span> Verified</span> <MdOutlineVerified color="green" />
+            </Box>
+          )}
+        </Box>
         <Typography className="text-center text-[13px]  text-gray-500">
-          Software Engineer
-        </Typography>
-        <Typography className="text-center text-[13px]  text-gray-500">
-          09019200922, 125 Ekehuan Road.
+          {user?.phone}, {user?.address}
         </Typography>
       </Box>
       <Box className="grid grid-cols-3 sm:w-[50%] w-[90%] mt-10 m-auto ">
@@ -55,7 +60,9 @@ const ProfileDetails = () => {
         </Box>
       </Box>
       <Box className="flex items-center mt-10 justify-center">
-        <Button size="sm">Update Profile</Button>
+        <Link to="/dashboard/profile/update-profile">
+          <Button size="sm">Update Profile</Button>
+        </Link>
       </Box>
     </Box>
   );

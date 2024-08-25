@@ -8,13 +8,12 @@ import {
   IVerify,
   IForgotPassword,
   IResetPassword,
-} from "@/types/majorTypes";
+} from "@/types/auth.types";
 
 const token = localStorage.getItem("BST_access_Token");
 
 const initialState: initialAuthStateProps = {
-  user: null,
-  token: token ? token : null,
+  token: token ? JSON.parse(token) : null,
   isLoading: false,
   message: "",
   isSuccess: false,

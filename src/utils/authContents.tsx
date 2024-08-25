@@ -66,7 +66,7 @@ export const forgotPasswordInputs = [
 
 export const ChangePasswordInputs = [
   {
-    id: "currentPassword",
+    id: "oldPassword",
     label: "Current Password",
     type: "password",
     placeholder: "Enter your current password",
@@ -78,7 +78,7 @@ export const ChangePasswordInputs = [
     placeholder: "Enter your secured password",
   },
   {
-    id: "confirmPassword",
+    id: "confirmNewPassword",
     label: "Confirm Password",
     type: "password",
     placeholder: "Confirm your password",

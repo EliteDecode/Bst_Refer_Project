@@ -5,7 +5,7 @@ import {
   IRegister,
   IVerify,
   IResetPassword,
-} from "@/types/majorTypes";
+} from "@/types/auth.types";
 
 const login_user = async (userData: ILogin) => {
   const response = await axiosClient.post(`/auth/login`, userData);
@@ -69,6 +69,7 @@ const logout_user = async () => {
   if (response.data.success === true) {
     localStorage.removeItem("BST_access_Token");
     localStorage.removeItem("BST_refresh_Token");
+    localStorage.removeItem("BST_user_details");
   }
 
   return response.data;

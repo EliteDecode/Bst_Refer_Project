@@ -8,10 +8,11 @@ import { Typography } from "antd";
 import { MdMenu } from "react-icons/md";
 
 const Header = ({ setIsSidebar, isSidebar }: DashboardNavbarProps) => {
-  const { handleLogout, dashboardTitle, isLoading } = useDashboardHeader();
+  const { handleLogout, dashboardTitle, isLoading, user } =
+    useDashboardHeader();
 
   return (
-    <Box className="p-3 flex justify-between sticky top-0 border-b bg-white z-10 border-gray-100">
+    <Box className="p-3 flex items-center justify-between sticky top-0 border-b bg-white z-10 border-gray-100">
       <Button
         className="flex space-x-2 items-center justify-center bg-white hover:bg-gray-100 shadow-primary shadow-sm cursor-pointer hover:shadow-sm  rounded-full"
         onClick={() => setIsSidebar(!isSidebar)}>
@@ -22,11 +23,11 @@ const Header = ({ setIsSidebar, isSidebar }: DashboardNavbarProps) => {
           {dashboardTitle}
         </span>
       </Button>
-      <Box className="flex items-center space-x-2">
+      <Box className="flex  items-center space-x-2">
         <Typography
-          className="text-[15px] font-bold"
+          className="sm:text-[15px] text-[12px] font-bold"
           style={{ fontFamily: "eczar" }}>
-          Hi, Welcome John 👋{" "}
+          Hi, {user?.fullname} 👋{" "}
         </Typography>
         <Button
           size="sm"

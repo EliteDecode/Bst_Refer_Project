@@ -231,6 +231,29 @@ export const addUsersInputs = [
   },
 ];
 
+//Update Profile
+export const updateProfileInputs = [
+  {
+    label: "Full Name",
+    type: "text",
+    name: "fullname",
+    placeholder: "Enter full name",
+  },
+
+  {
+    label: "Phone Number",
+    type: "tel",
+    name: "phone",
+    placeholder: "Enter phone number",
+  },
+  {
+    label: "Address",
+    type: "text",
+    name: "address",
+    placeholder: "Enter address",
+  },
+];
+
 //Transaction data
 export const transactionData: TransactionProps[] = [
   {

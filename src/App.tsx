@@ -19,6 +19,8 @@ import {
   ConfirmCode,
   ForgotPassword,
   ResetPassword,
+  UpdateProfile,
+  VerifyEmail,
 } from "./routes";
 import { AuthLayout, DashboardLayout, Layout } from "./components/layout";
 
@@ -105,8 +107,16 @@ export default function App() {
               element: <Profile />,
             },
             {
+              path: "profile/update-profile",
+              element: <UpdateProfile />,
+            },
+            {
               path: "settings",
               element: <Settings />,
+            },
+            {
+              path: "settings/verify-email",
+              element: <VerifyEmail />,
             },
             {
               path: "help",

@@ -29,9 +29,7 @@ const useRegisterForm = () => {
 
     if (isError) {
       toast.error(message);
-      setTimeout(() => {
-        dispatch(reset());
-      }, 2000);
+      dispatch(reset());
     }
   }, [isSuccess, isError, message, dispatch]);
 

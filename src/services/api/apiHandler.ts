@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { LogoutUser } from "../features/auth/authSlice";
 
 // Ensure `Returned` can be any type, but provide a more specific type for the result
 export const createAsyncThunkWithHandler = <Returned = any, ThunkArg = void>(
@@ -18,13 +19,21 @@ export const createAsyncThunkWithHandler = <Returned = any, ThunkArg = void>(
 
       return result;
     } catch (error: any) {
-      console.log(error);
       const message =
         (error.response &&
           error.response.data &&
           (error.response.data.message || error.response.data.error)) ||
         error.message ||
         error.toString();
+
+      // Check if the error code is 401
+      if (error.response && error.response.status === 401) {
+        thunkAPI.dispatch(LogoutUser());
+        localStorage.removeItem("BST_access_Token");
+        localStorage.removeItem("BST_refresh_Token");
+        localStorage.removeItem("BST_user_details");
+        window.location.href = "/auth/login";
+      }
 
       return thunkAPI.rejectWithValue(message);
     }

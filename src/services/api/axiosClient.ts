@@ -10,7 +10,7 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use((config) => {
   const accessToken = localStorage.getItem("BST_access_Token");
   if (accessToken) {
-    config.headers["Authorization"] = `Bearer ${accessToken}`;
+    config.headers["Authorization"] = `Bearer ${JSON.parse(accessToken)}`;
   }
   return config;
 });
@@ -32,7 +32,7 @@ axiosClient.interceptors.response.use(
           `Bearer ${newAccessToken}`;
         return axiosClient(originalRequest);
       } catch (err) {
-        // Handle token refresh error, possibly logout the user
+        console.log(err);
       }
     }
     return Promise.reject(error);

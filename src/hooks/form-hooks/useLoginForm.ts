@@ -19,16 +19,12 @@ const useLoginForm = () => {
 
   useEffect(() => {
     if (isSuccess && message === "Login successfully") {
-      setTimeout(() => {
-        dispatch(reset());
-      }, 2000);
+      dispatch(reset());
     }
 
     if (isError && message) {
       toast.error(message);
-      setTimeout(() => {
-        dispatch(reset());
-      }, 2000);
+      dispatch(reset());
     }
   }, [isSuccess, isError, message, dispatch]);
 

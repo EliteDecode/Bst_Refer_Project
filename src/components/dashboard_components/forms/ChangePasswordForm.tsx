@@ -6,9 +6,10 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Button } from "../../ui/button";
 import useChangePasswordForm from "@/hooks/form-hooks/useChangePasswordForm";
 import { Typography } from "antd";
+import ButtonSpinners from "@/helpers/ButtonSpinners";
 
 const ChangePasswordForm = () => {
-  const { formik, handleTogglePasswordVisibility, showPassword } =
+  const { formik, handleTogglePasswordVisibility, showPassword, isLoading } =
     useChangePasswordForm();
 
   return (
@@ -62,8 +63,9 @@ const ChangePasswordForm = () => {
           <Button
             className="w-full"
             type="submit"
+            disabled={isLoading}
             style={{ fontFamily: "eczar" }}>
-            Submit
+            {isLoading ? <ButtonSpinners /> : "Submit"}
           </Button>
         </Box>
       </form>

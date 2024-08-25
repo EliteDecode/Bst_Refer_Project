@@ -14,8 +14,16 @@ import { Button } from "@/components/ui/button";
 
 import Mobile from "./Mobile";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "@/store";
+import { LogoutUser } from "@/services/features/auth/authSlice";
+import useDashboardHeader from "@/hooks/useDashboardHeader";
+import ButtonSpinners from "@/helpers/ButtonSpinners";
 
 const Navbar = () => {
+  const { token } = useSelector((state: any) => state.auth);
+  const { handleLogout, isLoading } = useDashboardHeader();
+
   return (
     <>
       {/* Main Bar */}
@@ -55,20 +63,43 @@ const Navbar = () => {
             </Grid>
             <Grid item xs={2} md={2}>
               <Box className="flex items-center space-x-1">
-                <Link to="/auth/register">
-                  <Button
-                    size="sm"
-                    className="bg-primary flex items-center space-x-1">
-                    <span>Apply Now</span>
-                  </Button>
-                </Link>
-                <Link to="/auth/login">
-                  <Button
-                    size="sm"
-                    className="bg-secondary text-white flex items-center space-x-1">
-                    <span>Login</span>
-                  </Button>
-                </Link>
+                {token ? (
+                  <>
+                    <Link to="/dashboard/home">
+                      <Button
+                        size="sm"
+                        disabled={isLoading}
+                        className="bg-primary flex items-center space-x-1">
+                        <span>Dashboard</span>
+                      </Button>
+                    </Link>
+
+                    <Button
+                      onClick={handleLogout}
+                      size="sm"
+                      disabled={isLoading}
+                      className="bg-destructive text-white flex items-center space-x-1">
+                      <span>{isLoading ? <ButtonSpinners /> : "Logout"}</span>
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/auth/register">
+                      <Button
+                        size="sm"
+                        className="bg-primary flex items-center space-x-1">
+                        <span>Apply Now</span>
+                      </Button>
+                    </Link>
+                    <Link to="/auth/login">
+                      <Button
+                        size="sm"
+                        className="bg-secondary text-white flex items-center space-x-1">
+                        <span>Login</span>
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </Box>
             </Grid>
           </Grid>

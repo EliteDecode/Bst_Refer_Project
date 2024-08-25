@@ -1,4 +1,3 @@
-import useHandleResizeSidebar from "@/hooks/useHandleResizeSidebar";
 import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./SideBar";
@@ -8,6 +7,7 @@ import toast from "react-hot-toast";
 import { useEffect } from "react";
 import { reset } from "@/services/features/auth/authSlice";
 import { AppDispatch } from "@/store";
+import useHandleResizeSidebar from "@/hooks/useHandleResizeSidebar";
 
 const DashboardLayout = () => {
   const { isSidebar, setIsSidebar } = useHandleResizeSidebar();
