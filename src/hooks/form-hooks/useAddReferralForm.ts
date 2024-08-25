@@ -1,34 +1,35 @@
-import { updateProfileSchema } from "@/lib/schemas";
-import { reset, UpdateUserDetails } from "@/services/features/user/userSlice";
+import { addReferralSchema } from "@/lib/schemas";
+import { useFormik } from "formik";
 import { AppDispatch } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
-import { useEffect } from "react";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
+import { Addreferral, reset } from "@/services/features/referral/referralSlice";
 
-const useUpdateProfileForm = () => {
-  const { user, isLoading, isSuccess, isError, message } = useSelector(
-    (state: any) => state.user
+const useAddReferralForm = () => {
+  const { isLoading, isSuccess, isError, message } = useSelector(
+    (state: any) => state.referral
   );
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
-      fullname: user?.fullname || "",
-      phone: user?.phone || "",
-      address: user?.address || "",
+      fullname: "",
+      email: "",
+      phone: "",
+      address: "",
+      course: "",
     },
-    validationSchema: updateProfileSchema,
-    enableReinitialize: true,
+    validationSchema: addReferralSchema,
     onSubmit: (values) => {
-      dispatch(UpdateUserDetails(values));
+      dispatch(Addreferral(values));
     },
   });
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && message == "Referral added successfully") {
       toast.success(message);
       dispatch(reset());
       navigate(-1);
@@ -44,4 +45,4 @@ const useUpdateProfileForm = () => {
   return { formik, isLoading };
 };
 
-export default useUpdateProfileForm;
+export default useAddReferralForm;

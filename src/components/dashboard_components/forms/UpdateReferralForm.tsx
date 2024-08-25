@@ -4,10 +4,12 @@ import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
 import { Typography } from "antd";
 import { addUsersInputs } from "@/utils/dashboardContents";
-import useAddUserForm from "@/hooks/form-hooks/useAddUserForm";
 
-const AddUserForm = () => {
-  const { formik } = useAddUserForm();
+import ButtonSpinners from "@/helpers/ButtonSpinners";
+import useUpdateReferralForm from "@/hooks/form-hooks/useUpdateReferralForm";
+
+const UpdateReferralForm = () => {
+  const { formik, isLoading } = useUpdateReferralForm();
   return (
     <Box className=" py-2">
       <form onSubmit={formik.handleSubmit}>
@@ -23,6 +25,7 @@ const AddUserForm = () => {
                 "border-red-500 border"
               }`}
               id={item?.name}
+              value={formik.values[item.name as keyof typeof formik.values]}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               type={item.type}
@@ -39,8 +42,11 @@ const AddUserForm = () => {
           </Box>
         ))}
         <Box className="mt-5">
-          <Button className="w-full" style={{ fontFamily: "eczar" }}>
-            Add User
+          <Button
+            disabled={isLoading}
+            className="w-full"
+            style={{ fontFamily: "eczar" }}>
+            {isLoading ? <ButtonSpinners /> : "Update Referral"}
           </Button>
         </Box>
       </form>
@@ -48,4 +54,4 @@ const AddUserForm = () => {
   );
 };
 
-export default AddUserForm;
+export default UpdateReferralForm;

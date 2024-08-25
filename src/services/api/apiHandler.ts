@@ -25,7 +25,7 @@ export const createAsyncThunkWithHandler = <Returned = any, ThunkArg = void>(
           (error.response.data.message || error.response.data.error)) ||
         error.message ||
         error.toString();
-
+      console.log(error);
       // Check if the error code is 401
       if (error.response && error.response.status === 401) {
         thunkAPI.dispatch(LogoutUser());

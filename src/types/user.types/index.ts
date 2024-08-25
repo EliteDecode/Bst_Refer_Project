@@ -3,7 +3,7 @@ export interface initialUserStateProps {
   isSuccess: boolean;
   isError: boolean;
   message: string;
-  user: IUser | null;
+  user: IUser[] | null;
 }
 
 export interface IUser {

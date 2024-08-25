@@ -6,7 +6,6 @@ import {
 
 // routes
 import {
-  Users,
   Dashboard,
   Help,
   Home,
@@ -15,12 +14,14 @@ import {
   Register,
   Settings,
   Wallet,
-  AddUser,
   ConfirmCode,
   ForgotPassword,
   ResetPassword,
   UpdateProfile,
   VerifyEmail,
+  Referrals,
+  AddReferral,
+  ViewReferral,
 } from "./routes";
 import { AuthLayout, DashboardLayout, Layout } from "./components/layout";
 
@@ -91,12 +92,16 @@ export default function App() {
               element: <Dashboard />,
             },
             {
-              path: "users",
-              element: <Users />,
+              path: "referrals",
+              element: <Referrals />,
             },
             {
-              path: "add-user",
-              element: <AddUser />,
+              path: "view-referral/:referralId",
+              element: <ViewReferral />,
+            },
+            {
+              path: "add-referral",
+              element: <AddReferral />,
             },
             {
               path: "wallet",

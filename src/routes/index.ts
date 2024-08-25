@@ -13,12 +13,14 @@ export const ResetPassword = lazy(() => import("../pages/Auth/ResetPassword"));
 
 //Dashboard Routes
 export const Dashboard = lazy(() => import("../pages/Dashboard/Dashboard"));
-
 export const Settings = lazy(() => import("../pages/Dashboard/Settings"));
-export const Users = lazy(() => import("../pages/Dashboard/Users"));
+export const Referrals = lazy(() => import("../pages/Dashboard/Referrals"));
+export const ViewReferral = lazy(
+  () => import("../pages/Dashboard/ViewReferral")
+);
 export const Help = lazy(() => import("../pages/Dashboard/Help"));
 export const Wallet = lazy(() => import("../pages/Dashboard/Wallet"));
-export const AddUser = lazy(() => import("../pages/Dashboard/AddUser"));
+export const AddReferral = lazy(() => import("../pages/Dashboard/AddReferral"));
 
 //Profile Routes
 export const Profile = lazy(() => import("../pages/Dashboard/Profile"));

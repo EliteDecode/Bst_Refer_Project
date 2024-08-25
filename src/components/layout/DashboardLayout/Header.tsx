@@ -23,7 +23,7 @@ const Header = ({ setIsSidebar, isSidebar }: DashboardNavbarProps) => {
           {dashboardTitle}
         </span>
       </Button>
-      <Box className="flex  items-center space-x-2">
+      <Box className="flex sm:items-center justify-end flex-wrap space-x-2">
         <Typography
           className="sm:text-[15px] text-[12px] font-bold"
           style={{ fontFamily: "eczar" }}>

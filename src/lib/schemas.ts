@@ -53,7 +53,7 @@ export const forgotPasswordSchema = Yup.object().shape({
 });
 
 //AddUSer Schema
-export const addUserSchema = Yup.object().shape({
+export const addReferralSchema = Yup.object().shape({
   fullname: Yup.string()
     .min(2, "Fullname is too short")
     .required("Fullname is required"),

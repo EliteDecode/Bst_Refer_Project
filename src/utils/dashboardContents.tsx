@@ -18,7 +18,7 @@ export const sideBarLinks = [
         Icon: (
           <MdDashboard
             className={`${path.includes("home") ? "text-primary" : "text-gray-500"}`}
-            size={14}
+            size={12}
           />
         ),
         link: "home",
@@ -28,7 +28,7 @@ export const sideBarLinks = [
         Icon: (
           <ImProfile
             className={`${path.includes("profile") ? "text-primary" : "text-gray-500"}`}
-            size={14}
+            size={12}
           />
         ),
         link: "profile",
@@ -36,27 +36,27 @@ export const sideBarLinks = [
     ],
   },
   {
-    title: "User Management",
+    title: "Referral Management",
     content: [
       {
-        Title: "All Users",
+        Title: "All Referrals",
         Icon: (
           <FaUsersCog
-            className={`${path.includes("users") ? "text-primary" : "text-gray-500"}`}
+            className={`${path.includes("referrals") ? "text-primary" : "text-gray-500"}`}
             size={16}
           />
         ),
-        link: "users",
+        link: "referrals",
       },
       {
-        Title: "Add New User",
+        Title: "Add New Referral",
         Icon: (
           <RiUserAddFill
-            className={`${path.includes("add-user") ? "text-primary" : "text-gray-500"}`}
+            className={`${path.includes("add-referral") ? "text-primary" : "text-gray-500"}`}
             size={16}
           />
         ),
-        link: "add-user",
+        link: "add-referral",
       },
     ],
   },
@@ -68,7 +68,7 @@ export const sideBarLinks = [
         Icon: (
           <FaWallet
             className={`${path.includes("wallet") ? "text-primary" : "text-gray-500"}`}
-            size={14}
+            size={12}
           />
         ),
         link: "wallet",

@@ -1,19 +1,22 @@
-import React, { useRef, useState } from "react";
+import { IReferralTable } from "@/types/referral.types";
 import { SearchOutlined } from "@ant-design/icons";
+import { Box } from "@mui/material";
 import type { InputRef, TableColumnsType, TableColumnType } from "antd";
 import { Button, Input, Space, Table } from "antd";
 import type { FilterDropdownProps } from "antd/es/table/interface";
+import { useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
-import { UserProps } from "@/types/majorTypes";
-import { usersData } from "@/utils/dashboardContents";
-import { Box } from "@mui/material";
+import { FaRegEye } from "react-icons/fa";
 import { LuPartyPopper } from "react-icons/lu";
 import { MdInfoOutline } from "react-icons/md";
-import { FaRegEye } from "react-icons/fa";
+import { SlCalender } from "react-icons/sl";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-type DataIndex = keyof UserProps;
+type DataIndex = keyof IReferralTable;
 
-const AllUsersTables: React.FC = () => {
+const AllReferralsTables = () => {
+  const { referrals } = useSelector((state: any) => state.referral);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef<InputRef>(null);
@@ -35,7 +38,7 @@ const AllUsersTables: React.FC = () => {
 
   const getColumnSearchProps = (
     dataIndex: DataIndex
-  ): TableColumnType<UserProps> => ({
+  ): TableColumnType<IReferralTable> => ({
     filterDropdown: ({
       setSelectedKeys,
       selectedKeys,
@@ -120,7 +123,7 @@ const AllUsersTables: React.FC = () => {
       ),
   });
 
-  const columns: TableColumnsType<UserProps> = [
+  const columns: TableColumnsType<IReferralTable> = [
     {
       title: "Name",
       dataIndex: "fullname",
@@ -149,12 +152,22 @@ const AllUsersTables: React.FC = () => {
         <span className="text-[12px]">{record?.phone}</span>
       ),
     },
+    {
+      title: "Course",
+      dataIndex: "course",
+      key: "course",
+
+      ...getColumnSearchProps("course"),
+      render: (_, record) => (
+        <span className="text-[12px]">{record?.course}</span>
+      ),
+    },
 
     {
-      title: "Status",
+      title: "Match Status",
       render: (_, record) => (
         <Box>
-          {record.status === "successful" ? (
+          {record.isMatched === true ? (
             <div className="text-green-500 flex items-center space-x-1  w-full m-auto justify-center capitalize border text-[11px]  bg-green-50 rounded-lg cursor-pointer py-1 px-1 ">
               <LuPartyPopper /> <span className="text-[9px]">Successful</span>
             </div>
@@ -171,15 +184,34 @@ const AllUsersTables: React.FC = () => {
 
       key: "action",
       fixed: "right",
-      render: () => (
-        <div className="text-blue-500 flex items-center space-x-1   w-full m-auto justify-center capitalize border text-[11px]  bg-blue-50 rounded-lg cursor-pointer py-1 px-1 ">
-          <FaRegEye /> <span className="text-[9px]">View User</span>
-        </div>
+      render: (_, record) => (
+        <Link to={`/dashboard/view-referral/${record?._id}`}>
+          <div className="text-blue-500 flex items-center space-x-1   w-full m-auto justify-center capitalize border text-[11px]  bg-blue-50 rounded-lg cursor-pointer py-1 px-1 ">
+            <FaRegEye /> <span className="text-[9px]">View User</span>
+          </div>
+        </Link>
+      ),
+    },
+    {
+      title: "created At",
+      render: (_, record) => (
+        <Box>
+          <div className="text-purple-500 flex items-center space-x-1  w-full m-auto justify-center capitalize border text-[11px]  bg-purple-50 rounded-lg py-0.5 px-1 ">
+            <SlCalender />{" "}
+            <span className="text-[9px]">
+              {new Date(record.createdAt).toLocaleString("en", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </span>
+          </div>
+        </Box>
       ),
     },
   ];
 
-  return <Table columns={columns} dataSource={usersData} size="small" />;
+  return <Table columns={columns} dataSource={referrals} size="small" />;
 };
 
-export default AllUsersTables;
+export default AllReferralsTables;

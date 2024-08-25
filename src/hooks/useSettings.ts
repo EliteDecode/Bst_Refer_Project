@@ -32,16 +32,12 @@ const useSettings = () => {
     if (isSuccess && message == "User deleted successfully") {
       navigate("/auth/login");
       toast.success(message);
-      setTimeout(() => {
-        dispatch(reset());
-      }, 2000);
+      dispatch(reset());
     }
 
     if (isError && message) {
       toast.error(message);
-      setTimeout(() => {
-        dispatch(reset());
-      }, 2000);
+      dispatch(reset());
     }
   }, [isLoading, isError, isSuccess, message]);
 

@@ -1,20 +1,18 @@
-import useAddUserForm from "@/hooks/form-hooks/useAddReferralForm";
-import { updateProfileInputs } from "@/utils/dashboardContents";
 import { Box } from "@mui/material";
-import { Typography } from "antd";
-import { Button } from "../../ui/button";
-import { Input } from "../../ui/input";
 import { Label } from "../../ui/label";
-import useUpdateProfileForm from "@/hooks/form-hooks/useUpdateProfileForm";
+import { Input } from "../../ui/input";
+import { Button } from "../../ui/button";
+import { Typography } from "antd";
+import { addUsersInputs } from "@/utils/dashboardContents";
+import useAddReferralForm from "@/hooks/form-hooks/useAddReferralForm";
 import ButtonSpinners from "@/helpers/ButtonSpinners";
 
-const UpdateProfileForm = () => {
-  const { formik, isLoading } = useUpdateProfileForm();
-
+const AddUserForm = () => {
+  const { formik, isLoading } = useAddReferralForm();
   return (
     <Box className=" py-2">
       <form onSubmit={formik.handleSubmit}>
-        {updateProfileInputs?.map((item, index) => (
+        {addUsersInputs?.map((item, index) => (
           <Box key={index}>
             <Label className="text-[11px] text-[#0009]" htmlFor={item.name}>
               {item?.label}
@@ -26,7 +24,6 @@ const UpdateProfileForm = () => {
                 "border-red-500 border"
               }`}
               id={item?.name}
-              value={formik.values[item.name as keyof typeof formik.values]}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               type={item.type}
@@ -47,7 +44,7 @@ const UpdateProfileForm = () => {
             disabled={isLoading}
             className="w-full"
             style={{ fontFamily: "eczar" }}>
-            {isLoading ? <ButtonSpinners /> : "Update Profile"}
+            {isLoading ? <ButtonSpinners /> : "Add Referral"}
           </Button>
         </Box>
       </form>
@@ -55,4 +52,4 @@ const UpdateProfileForm = () => {
   );
 };
 
-export default UpdateProfileForm;
+export default AddUserForm;
