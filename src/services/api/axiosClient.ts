@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "http://localhost:3007/bst/v1",
+  // baseURL: "http://localhost:3007/bst/v1",
+  baseURL: "https://bst-refer-backend.onrender.com/bst/v1",
   headers: {
     "Content-Type": "application/json",
   },
