@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Referrals = () => {
-  const { isLoading, referrals } = useSelector((state: any) => state.referral);
+  const { isLoading } = useSelector((state: any) => state.referral);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Referrals = () => {
           <Loader />
         ) : (
           <Box className="mt-5 border-gray-200 shadow-md border p-5 rounded-lg sm:overflow-x-auto overflow-x-scroll">
-            <AllReferralsTables data={referrals} />
+            <AllReferralsTables />
           </Box>
         )}
       </Box>

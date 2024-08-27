@@ -11,7 +11,7 @@ import useUpdateReferralForm from "@/hooks/form-hooks/useUpdateReferralForm";
 const UpdateReferralForm = () => {
   const { formik, isLoading } = useUpdateReferralForm();
   return (
-    <Box className=" py-2">
+    <Box className="py-2">
       <form onSubmit={formik.handleSubmit}>
         {addUsersInputs?.map((item, index) => (
           <Box key={index}>
@@ -34,8 +34,11 @@ const UpdateReferralForm = () => {
             <Box className="relative">
               {formik.touched[item.name as keyof typeof formik.touched] &&
                 formik.errors[item.name as keyof typeof formik.errors] && (
-                  <Typography className="text-[10px]  text-red-600 ">
-                    {formik.errors[item.name as keyof typeof formik.errors]} (*)
+                  <Typography className="text-[10px] text-red-600">
+                    {String(
+                      formik.errors[item.name as keyof typeof formik.errors]
+                    )}{" "}
+                    (*)
                   </Typography>
                 )}
             </Box>

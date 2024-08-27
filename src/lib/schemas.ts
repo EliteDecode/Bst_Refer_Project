@@ -40,6 +40,10 @@ export const loginSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
+export const withdrawalSchema = Yup.object().shape({
+  amount: Yup.number().required("Withdrawal Amount is required"),
+});
+
 export const changeEmailSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
@@ -63,6 +67,16 @@ export const addReferralSchema = Yup.object().shape({
   phone: Yup.string().required("Phone number is required"),
   address: Yup.string().required("Address is required"),
   course: Yup.string().required("Course is required"),
+});
+
+//Send Comlaint
+export const sendComplaintSchema = Yup.object().shape({
+  title: Yup.string()
+    .min(5, "Title of complaint is too short")
+    .required("Title of complaint is required"),
+  message: Yup.string()
+    .min(15, "Message of complaint is too short")
+    .required("Message of complaint is required"),
 });
 
 //AddUSer Schema

@@ -6,47 +6,64 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Box, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
-import { Typography } from "antd";
-import AreaChartComp from "./AreaChartComp";
-import { usersDataChart } from "@/utils/dashboardContents";
 import { InfoCardDisplayProps } from "@/types/majorTypes";
+import { Box, Grid } from "@mui/material";
+import { Typography } from "antd";
+import { Link } from "react-router-dom";
+import AreaChartComp from "./AreaChartComp";
 
-import usersIcon from "@/assets/icons/team.png";
 import registeredUsersIcon from "@/assets/icons/document.png";
+import usersIcon from "@/assets/icons/team.png";
 import walletIcon from "@/assets/icons/wallet.png";
-import settingsIcon from "@/assets/icons/settings.png";
+import { modelReferralDataToChart } from "@/lib/referralChartData";
+import { FaNairaSign } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 const InfoCardDisplay = () => {
+  const { referrals } = useSelector((state: any) => state.referral);
+  const { wallets } = useSelector((state: any) => state.wallet);
+
+  const referralChat = modelReferralDataToChart(referrals);
+
   const HomeCardContents: InfoCardDisplayProps[] = [
     {
-      title: "All Users",
-      description: 0,
-      buttonText: "View All Users",
-      link: "/dashboard/teachers",
+      title: "All Referrals",
+      description: referrals?.length,
+      buttonText: "View All Referrals",
+      link: "/dashboard/referrals",
       image: usersIcon,
     },
     {
-      title: "Registered Users",
-      description: 0,
-      buttonText: "View Registered Users",
+      title: "Matched Referrals",
+      description: referrals?.filter((item: any) => item.isMatched === true)
+        .length,
+      buttonText: "View All Referrals",
       link: "/dashboard/teachers",
       image: registeredUsersIcon,
     },
     {
-      title: "Wallet",
-      description: (50000).toLocaleString(),
+      title: "Balance Wallet",
+      description: (
+        <Box className="flex items-center justify-center space-x-1">
+          <FaNairaSign size={12} />{" "}
+          <span>{(wallets?.balance).toLocaleString()}</span>
+        </Box>
+      ),
       buttonText: "View Wallet",
-      link: "/dashboard/students",
+      link: "/dashboard/walletes",
       image: walletIcon,
     },
     {
-      title: "Settings",
-      description: 7,
-      buttonText: "View Settings",
-      link: "/dashboard/parents",
-      image: settingsIcon,
+      title: "Withdrawn Wallet",
+      description: (
+        <Box className="flex items-center justify-center space-x-1">
+          <FaNairaSign size={12} />{" "}
+          <span>{(wallets?.withdrawn).toLocaleString()}</span>
+        </Box>
+      ),
+      buttonText: "View Wallet",
+      link: "/dashboard/walletes",
+      image: walletIcon,
     },
   ];
   return (
@@ -94,7 +111,7 @@ const InfoCardDisplay = () => {
               Overview of Users
             </Typography>
             <AreaChartComp
-              data={usersDataChart}
+              data={referralChat}
               stroke="#87CEEB"
               fill="#87CEEB"
             />

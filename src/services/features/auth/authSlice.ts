@@ -89,7 +89,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string;
-        state.user = null;
+
         state.isSuccess = false;
       })
 
@@ -106,7 +106,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string;
-        state.user = null;
+
         state.isSuccess = false;
       })
 
@@ -119,13 +119,12 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.message = "Logout successfully";
         state.token = null;
-        state.user = null;
       })
       .addCase(LogoutUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string;
-        state.user = null;
+
         state.isSuccess = false;
       })
 
@@ -142,7 +141,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string;
-        state.user = null;
+
         state.isSuccess = false;
       })
       .addCase(ForgotPassword.pending, (state, _) => {
@@ -158,7 +157,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string;
-        state.user = null;
+
         state.isSuccess = false;
       })
       .addCase(ResetPassword.pending, (state, _) => {
@@ -174,7 +173,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string;
-        state.user = null;
+
         state.isSuccess = false;
       });
   },

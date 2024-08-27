@@ -1,6 +1,5 @@
 import axiosClient from "@/services/api/axiosClient";
-import { IVerify } from "@/types/auth.types";
-import { IUser, IChangePassword } from "@/types/user.types";
+import { IChangePassword, IUser } from "@/types/user.types";
 
 const fetch_user_details = async () => {
   const response = await axiosClient.get(`/user`);

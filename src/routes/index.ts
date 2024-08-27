@@ -18,9 +18,10 @@ export const Referrals = lazy(() => import("../pages/Dashboard/Referrals"));
 export const ViewReferral = lazy(
   () => import("../pages/Dashboard/ViewReferral")
 );
+export const AddReferral = lazy(() => import("../pages/Dashboard/AddReferral"));
 export const Help = lazy(() => import("../pages/Dashboard/Help"));
 export const Wallet = lazy(() => import("../pages/Dashboard/Wallet"));
-export const AddReferral = lazy(() => import("../pages/Dashboard/AddReferral"));
+export const Withdrawal = lazy(() => import("../pages/Dashboard/Withdrawal"));
 
 //Profile Routes
 export const Profile = lazy(() => import("../pages/Dashboard/Profile"));

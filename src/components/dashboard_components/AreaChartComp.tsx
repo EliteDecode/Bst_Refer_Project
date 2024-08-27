@@ -1,24 +1,22 @@
 import {
-  ComposedChart,
-  Line,
   Area,
   Bar,
+  CartesianGrid,
+  ComposedChart,
+  Legend,
+  Line,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Scatter,
-  ResponsiveContainer,
 } from "recharts";
 
 type AreaChartCompProps = {
   data: {
     name: string;
-    uv: number;
-    pv: number;
-    amt: number;
-    cnt?: number;
+    totalReferrals: number;
+    matchedReferrals: number;
+    conversionRate: number;
   }[];
   stroke: string;
   fill: string;
@@ -42,10 +40,14 @@ const AreaChartComp = ({ data, stroke, fill }: AreaChartCompProps) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Area type="monotone" dataKey="amt" fill={fill} stroke={stroke} />
-        <Bar dataKey="pv" barSize={20} fill={fill} />
-        <Line type="monotone" dataKey="uv" stroke={stroke} />
-        <Scatter dataKey="cnt" fill="red" />
+        <Area
+          type="monotone"
+          dataKey="totalReferrals"
+          fill={fill}
+          stroke={stroke}
+        />
+        <Bar dataKey="matchedReferrals" barSize={20} fill={fill} />
+        <Line type="monotone" dataKey="conversionRate" stroke={stroke} />
       </ComposedChart>
     </ResponsiveContainer>
   );

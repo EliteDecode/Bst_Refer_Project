@@ -1,16 +1,13 @@
-import { Box, Grid } from "@mui/material";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import globe from "@/utils/globe.json";
-import TitleText from "../common/TitleText";
-import { motion, useAnimation } from "framer-motion";
-import { Typography } from "antd";
-import { useEffect, useRef } from "react";
+import { Box } from "@mui/material";
+import { useAnimation } from "framer-motion";
+import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import DescriptionText from "../common/DescriptionText";
+import TitleText from "../common/TitleText";
 
 const Globe = () => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.5 });
+  const [_, inView] = useInView({ triggerOnce: false, threshold: 0.5 });
 
   useEffect(() => {
     if (inView) {

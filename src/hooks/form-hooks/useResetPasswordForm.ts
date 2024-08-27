@@ -1,9 +1,5 @@
-import { registrationSchema, resetPasswordSchema } from "@/lib/schemas";
-import {
-  RegisterUser,
-  reset,
-  ResetPassword,
-} from "@/services/features/auth/authSlice";
+import { resetPasswordSchema } from "@/lib/schemas";
+import { reset, ResetPassword } from "@/services/features/auth/authSlice";
 import { AppDispatch } from "@/store";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";

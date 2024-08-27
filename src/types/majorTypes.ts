@@ -69,10 +69,21 @@ export type UserProps = {
 
 //Transaction Props
 export type TransactionProps = {
-  fullname: string;
-  email: string;
-  phone: string;
+  referralName: string;
+  referralPhone: number;
   amount: number;
   date: string;
-  status: "pending" | "paid";
+  type: "credit" | "debit";
+};
+
+export type IMessage = {
+  message: string;
+  title: string;
+};
+
+export type initialSupportStateProps = {
+  isLoading: boolean;
+  isSuccess: boolean;
+  message: string;
+  isError: boolean;
 };

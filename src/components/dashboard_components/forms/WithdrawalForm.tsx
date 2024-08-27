@@ -10,9 +10,12 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import ButtonSpinners from "@/helpers/ButtonSpinners";
+import useWithdrawalForm from "@/hooks/form-hooks/useWithdrawalForm";
 import { PiHandWithdraw } from "react-icons/pi";
 
 export function WithdrawalForm() {
+  const { formik, isLoading } = useWithdrawalForm();
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -42,12 +45,26 @@ export function WithdrawalForm() {
             style={{ fontFamily: "eczar" }}>
             Amount
           </Label>
-          <Input id="name" value="" placeholder="Please enter amount" />
+          <Input
+            id="name"
+            onChange={formik.handleChange("amount")}
+            onBlur={formik.handleBlur("amount")}
+            placeholder="Please enter amount"
+          />
+          {formik.touched.amount && formik.errors.amount ? (
+            <div className="text-red-500 text-[10px]">
+              {formik.errors.amount}
+            </div>
+          ) : null}
         </div>
         <DialogFooter>
-          <Button type="submit" style={{ fontFamily: "eczar" }}>
+          <Button
+            disabled={isLoading}
+            type="submit"
+            style={{ fontFamily: "eczar" }}
+            onClick={() => formik.handleSubmit()}>
             {" "}
-            Withdraw
+            {isLoading ? <ButtonSpinners /> : "     Withdraw"}
           </Button>
         </DialogFooter>
       </DialogContent>

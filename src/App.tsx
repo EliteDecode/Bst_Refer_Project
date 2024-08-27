@@ -22,6 +22,7 @@ import {
   Referrals,
   AddReferral,
   ViewReferral,
+  Withdrawal,
 } from "./routes";
 import { AuthLayout, DashboardLayout, Layout } from "./components/layout";
 
@@ -106,6 +107,10 @@ export default function App() {
             {
               path: "wallet",
               element: <Wallet />,
+            },
+            {
+              path: "withdrawal",
+              element: <Withdrawal />,
             },
             {
               path: "profile",

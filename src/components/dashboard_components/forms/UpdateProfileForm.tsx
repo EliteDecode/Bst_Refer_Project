@@ -1,12 +1,11 @@
-import useAddUserForm from "@/hooks/form-hooks/useAddReferralForm";
+import ButtonSpinners from "@/helpers/ButtonSpinners";
+import useUpdateProfileForm from "@/hooks/form-hooks/useUpdateProfileForm";
 import { updateProfileInputs } from "@/utils/dashboardContents";
 import { Box } from "@mui/material";
 import { Typography } from "antd";
 import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
 import { Label } from "../../ui/label";
-import useUpdateProfileForm from "@/hooks/form-hooks/useUpdateProfileForm";
-import ButtonSpinners from "@/helpers/ButtonSpinners";
 
 const UpdateProfileForm = () => {
   const { formik, isLoading } = useUpdateProfileForm();
@@ -35,8 +34,11 @@ const UpdateProfileForm = () => {
             <Box className="relative">
               {formik.touched[item.name as keyof typeof formik.touched] &&
                 formik.errors[item.name as keyof typeof formik.errors] && (
-                  <Typography className="text-[10px]  text-red-600 ">
-                    {formik.errors[item.name as keyof typeof formik.errors]} (*)
+                  <Typography className="text-[10px] text-red-600">
+                    {String(
+                      formik.errors[item.name as keyof typeof formik.errors]
+                    )}{" "}
+                    (*)
                   </Typography>
                 )}
             </Box>

@@ -1,5 +1,5 @@
+import { Box } from "@mui/material";
 import TitleText from "../common/TitleText";
-import { Box, Grid } from "@mui/material";
 
 const HowMuchYouCanEarn = () => {
   return (

@@ -1,12 +1,11 @@
 import { createAsyncThunkWithHandler } from "@/services/api/apiHandler";
-import userService from "./userService";
-import { createSlice } from "@reduxjs/toolkit";
 import {
   IChangePassword,
   initialUserStateProps,
   IUser,
 } from "@/types/user.types";
-import { IVerify } from "@/types/auth.types";
+import { createSlice } from "@reduxjs/toolkit";
+import userService from "./userService";
 
 const user = localStorage.getItem("BST_user_details");
 

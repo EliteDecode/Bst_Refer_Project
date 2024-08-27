@@ -2,7 +2,6 @@ import { ConfirmCodeForm } from "@/components/auth/ConfirmCodeForm";
 import useConfirmCodeForm from "@/hooks/form-hooks/useConfirmCodeForm";
 import { Box } from "@mui/material";
 import { Typography } from "antd";
-import { Link } from "react-router-dom";
 
 const ConfirmCode = () => {
   const { user } = useConfirmCodeForm();

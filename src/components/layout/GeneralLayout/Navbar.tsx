@@ -1,24 +1,22 @@
 import {
   NavigationMenu,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-  NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
-import Logo from "../../../assets/images/Logo.png";
 import { Box, Grid } from "@mui/material";
+import Logo from "../../../assets/images/Logo.png";
 
+import { Button } from "@/components/ui/button";
 import { NavbarLinks } from "@/utils/contents";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import { Button } from "@/components/ui/button";
 
-import Mobile from "./Mobile";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "@/store";
-import { LogoutUser } from "@/services/features/auth/authSlice";
-import useDashboardHeader from "@/hooks/useDashboardHeader";
 import ButtonSpinners from "@/helpers/ButtonSpinners";
+import useDashboardHeader from "@/hooks/useDashboardHeader";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import Mobile from "./Mobile";
 
 const Navbar = () => {
   const { token } = useSelector((state: any) => state.auth);

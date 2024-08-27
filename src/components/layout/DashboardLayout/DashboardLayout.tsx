@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { reset } from "@/services/features/auth/authSlice";
 import { AppDispatch } from "@/store";
 import useHandleResizeSidebar from "@/hooks/useHandleResizeSidebar";
+import Footer from "../GeneralLayout/Footer";
 
 const DashboardLayout = () => {
   const { isSidebar, setIsSidebar } = useHandleResizeSidebar();
@@ -47,6 +48,7 @@ const DashboardLayout = () => {
           <Box className=" p-5 h-screen w-full overflow-y-scroll bg-[#fafafa] ">
             <Outlet />
           </Box>
+          <Footer />
         </Box>
       </Box>
     </div>

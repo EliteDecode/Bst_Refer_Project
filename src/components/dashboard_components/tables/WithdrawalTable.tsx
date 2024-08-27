@@ -1,20 +1,20 @@
-import { TransactionProps } from "@/types/majorTypes";
+import { IWithdrawal } from "@/types/wallet.types";
 import { SearchOutlined } from "@ant-design/icons";
 import { Box } from "@mui/material";
 import type { InputRef, TableColumnsType, TableColumnType } from "antd";
 import { Button, Input, Space, Table } from "antd";
 import type { FilterDropdownProps } from "antd/es/table/interface";
-import { Minus } from "lucide-react";
 import React, { useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
 import { LuPartyPopper } from "react-icons/lu";
+import { MdCancel, MdInfoOutline } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
 import { useSelector } from "react-redux";
 
-type DataIndex = keyof TransactionProps;
+type DataIndex = keyof IWithdrawal;
 
-const TransactionTable: React.FC = () => {
-  const { wallets } = useSelector((state: any) => state.wallet);
+const WithdrawalTable: React.FC = () => {
+  const { withdrawals } = useSelector((state: any) => state.wallet);
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef<InputRef>(null);
@@ -36,7 +36,7 @@ const TransactionTable: React.FC = () => {
 
   const getColumnSearchProps = (
     dataIndex: DataIndex
-  ): TableColumnType<TransactionProps> => ({
+  ): TableColumnType<IWithdrawal> => ({
     filterDropdown: ({
       setSelectedKeys,
       selectedKeys,
@@ -121,26 +121,7 @@ const TransactionTable: React.FC = () => {
       ),
   });
 
-  const columns: TableColumnsType<TransactionProps> = [
-    {
-      title: "Referral Name",
-      dataIndex: "referralName",
-      key: "referralName",
-      ...getColumnSearchProps("referralName"),
-      render: (_, record) => (
-        <span className="text-[12px]">{record?.referralName}</span>
-      ),
-    },
-    {
-      title: "Referral Number",
-      dataIndex: "",
-      key: "referralPhone",
-      ...getColumnSearchProps("referralPhone"),
-      render: (_, record) => (
-        <span className="text-[12px]">{record?.referralPhone}</span>
-      ),
-    },
-
+  const columns: TableColumnsType<IWithdrawal> = [
     {
       title: "Amount",
       dataIndex: "amount",
@@ -152,16 +133,20 @@ const TransactionTable: React.FC = () => {
     },
 
     {
-      title: "Transaction Type",
+      title: "Transaction Status",
       render: (_, record) => (
         <Box>
-          {record.type === "credit" ? (
+          {record.status === "approved" ? (
             <div className="text-green-500 flex items-center space-x-1 sm:w-[65%] w-full m-auto justify-center capitalize border text-[11px]  bg-green-50 rounded-lg py-0.5 px-1 ">
-              <LuPartyPopper /> <span className="text-[9px]">Credit</span>
+              <LuPartyPopper /> <span className="text-[9px]">Paid</span>
+            </div>
+          ) : record.status === "pending" ? (
+            <div className="text-orange-500 flex items-center space-x-1 sm:w-[65%] w-full m-auto justify-center capitalize border text-[11px]  bg-orange-50 rounded-lg py-0.5 px-1 ">
+              <MdInfoOutline /> <span className="text-[9px]">Pending</span>
             </div>
           ) : (
             <div className="text-red-500 flex items-center space-x-1 sm:w-[65%] w-full m-auto justify-center capitalize border text-[11px]  bg-red-50 rounded-lg py-0.5 px-1 ">
-              <Minus /> <span className="text-[9px]">Debit</span>
+              <MdCancel /> <span className="text-[9px]">Declined</span>
             </div>
           )}
         </Box>
@@ -186,9 +171,7 @@ const TransactionTable: React.FC = () => {
     },
   ];
 
-  return (
-    <Table columns={columns} dataSource={wallets?.transactions} size="small" />
-  );
+  return <Table columns={columns} dataSource={withdrawals} size="small" />;
 };
 
-export default TransactionTable;
+export default WithdrawalTable;

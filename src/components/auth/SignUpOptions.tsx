@@ -1,8 +1,7 @@
+import facebookIcon from "@/assets/icons/facebook2.png";
+import googleIcon from "@/assets/icons/google.png";
 import { Box } from "@mui/material";
 import { Button } from "../ui/button";
-import googleIcon from "@/assets/icons/google.png";
-import facebookIcon from "@/assets/icons/facebook2.png";
-import instagramIcon from "@/assets/icons/instagram.png";
 
 const SignUpOptions = () => {
   return (

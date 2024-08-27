@@ -71,7 +71,7 @@ const Sidebar = ({ setIsSidebar, isSidebar }: DashboardNavbarProps) => {
                         location.pathname.includes(item2.link)
                           ? " text-primary font-bold"
                           : "text-gray-400"
-                      }  sm:text-[10px] text-[17px] `}>
+                      }  sm:text-[10px] text-[14px] `}>
                       {item2.Title}
                     </Typography>
                   </Link>

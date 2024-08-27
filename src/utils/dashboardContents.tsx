@@ -1,9 +1,10 @@
-import { MdDashboard } from "react-icons/md";
+import { UserProps } from "@/types/majorTypes";
+import { Download } from "lucide-react";
 import { FaUsersCog, FaWallet } from "react-icons/fa";
-import { RiUserAddFill } from "react-icons/ri";
 import { ImProfile } from "react-icons/im";
-import { IoMdHelp, IoIosSettings } from "react-icons/io";
-import { TransactionProps, UserProps } from "@/types/majorTypes";
+import { IoIosSettings, IoMdHelp } from "react-icons/io";
+import { MdDashboard } from "react-icons/md";
+import { RiUserAddFill } from "react-icons/ri";
 
 const path = window.location.pathname;
 
@@ -72,6 +73,16 @@ export const sideBarLinks = [
           />
         ),
         link: "wallet",
+      },
+      {
+        Title: "Withdrawal",
+        Icon: (
+          <Download
+            className={`${path.includes("withdrawal") ? "text-primary" : "text-gray-500"}`}
+            size={15}
+          />
+        ),
+        link: "withdrawal",
       },
       {
         Title: "Help",
@@ -251,89 +262,5 @@ export const updateProfileInputs = [
     type: "text",
     name: "address",
     placeholder: "Enter address",
-  },
-];
-
-//Transaction data
-export const transactionData: TransactionProps[] = [
-  {
-    fullname: "Chinonso Okeke",
-    email: "chinonso.okeke@example.com",
-    phone: "+2347012345678",
-    amount: 10000,
-    date: "2024-08-08",
-    status: "paid",
-  },
-  {
-    fullname: "Ayomide Adebayo",
-    email: "ayomide.adebayo@example.com",
-    phone: "+2348098765432",
-    amount: 10000,
-    date: "2024-08-08",
-    status: "paid",
-  },
-  {
-    fullname: "Ngozi Nwankwo",
-    email: "ngozi.nwankwo@example.com",
-    phone: "+2348034567890",
-    amount: 10000,
-    date: "2024-08-08",
-    status: "pending",
-  },
-  {
-    fullname: "Ibrahim Musa",
-    email: "ibrahim.musa@example.com",
-    phone: "+2349023456789",
-    amount: 10000,
-    date: "2024-08-08",
-    status: "paid",
-  },
-  {
-    fullname: "Funke Adewale",
-    email: "funke.adewale@example.com",
-    phone: "+2348134567891",
-    amount: 10000,
-    date: "2024-08-08",
-    status: "pending",
-  },
-  {
-    fullname: "Emeka Eze",
-    email: "emeka.eze@example.com",
-    phone: "+2348123456782",
-    amount: 10000,
-    date: "2024-08-08",
-    status: "pending",
-  },
-  {
-    fullname: "Yetunde Bakare",
-    email: "yetunde.bakare@example.com",
-    phone: "+2348145678912",
-    amount: 10000,
-    date: "2024-08-08",
-    status: "pending",
-  },
-  {
-    fullname: "Sola Adeyemi",
-    email: "sola.adeyemi@example.com",
-    phone: "+2347067891234",
-    amount: 10000,
-    date: "2024-08-08",
-    status: "paid",
-  },
-  {
-    fullname: "Bolanle Olayemi",
-    email: "bolanle.olayemi@example.com",
-    phone: "+2348076543210",
-    amount: 10000,
-    date: "2024-08-08",
-    status: "paid",
-  },
-  {
-    fullname: "Adamu Bello",
-    email: "adamu.bello@example.com",
-    phone: "+2349056781234",
-    amount: 10000,
-    date: "2024-08-08",
-    status: "pending",
   },
 ];
