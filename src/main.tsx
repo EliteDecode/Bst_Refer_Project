@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Provider store={store}>
         <App />
       </Provider>
+      <Toaster position="top-right" />
     </ErrorBoundary>
-    <Toaster position="top-right" />
   </Suspense>
 );

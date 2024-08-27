@@ -50,7 +50,7 @@ const ProfileDetails = () => {
             Total Matched
           </Typography>
           <Typography className="text-center font-bold text-[13px]">
-            {referrals?.filter((item: any) => item.isMatched === true).length}
+            {referrals?.filter((item: any) => item?.isMatched === true)?.length}
           </Typography>
         </Box>
         <Box className="flex flex-col justify-center items-center space-y-2">
@@ -60,7 +60,7 @@ const ProfileDetails = () => {
           <Box className="flex items-center space-x-1">
             <FaNairaSign size={12} />{" "}
             <Typography className="text-center font-bold text-[13px]">
-              {wallets?.total.toLocaleString()}
+              {wallets?.total?.toLocaleString()}
             </Typography>
           </Box>
         </Box>
