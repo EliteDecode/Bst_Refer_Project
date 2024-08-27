@@ -34,7 +34,7 @@ const Navbar = () => {
                 <AnchorLink href="#home">
                   <img
                     src={Logo}
-                    alt="Purplebee Logo"
+                    alt="BST Logo"
                     className="w-[50%]"
                     id="#home"
                   />
