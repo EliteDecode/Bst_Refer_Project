@@ -61,7 +61,7 @@ export const modelReferralDataToChart = (referrals: IReferral[]) => {
     },
   ];
 
-  referrals.forEach((user) => {
+  referrals?.forEach((user) => {
     if (!user?.createdAt) {
       return;
     }
