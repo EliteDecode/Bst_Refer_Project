@@ -19,6 +19,8 @@ const useUpdateProfileForm = () => {
       fullname: user?.fullname || "",
       phone: user?.phone || "",
       address: user?.address || "",
+      bstId: user?.bstId || "",
+      username: user?.username || "",
     },
     validationSchema: updateProfileSchema,
     enableReinitialize: true,

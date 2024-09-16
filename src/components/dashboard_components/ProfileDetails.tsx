@@ -20,8 +20,8 @@ const ProfileDetails = () => {
         <Typography className="text-center text-[13px]  text-gray-500">
           @{user?.email}
         </Typography>
-        <Box className="text-center text-[13px]  flex items-center justify-center space-x-2 text-gray-500">
-          <span>Status</span> :{" "}
+        <Box className="text-center text-[13px]  flex items-center justify-center space-x-2 text-gray-700">
+          <span className="font-bold">Status</span> :{" "}
           {!user?.isProfileUpdated ? (
             <Box className="flex items-center justify-center space-x-1">
               <span> Not Verified</span> <MdOutlineVerified color="red" />
@@ -32,6 +32,14 @@ const ProfileDetails = () => {
             </Box>
           )}
         </Box>
+        <Box className="text-center text-[13px]  flex items-center justify-center space-x-2 text-gray-700">
+          <span className="font-bold">BST ID</span> : <span>{user?.bstId}</span>
+        </Box>
+        <Box className="text-center text-[13px]  flex items-center justify-center space-x-2 text-gray-700">
+          <span className="font-bold">Username</span> :{" "}
+          <span>{user?.username}</span>
+        </Box>
+
         <Typography className="text-center text-[13px]  text-gray-500">
           {user?.phone}, {user?.address}
         </Typography>

@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Grid, Link } from "@mui/material";
 import { Facebook, Twitter, Instagram, LinkedIn } from "@mui/icons-material";
 import { Typography } from "antd";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Footer: React.FC = () => {
   return (
@@ -40,52 +41,37 @@ const Footer: React.FC = () => {
             </Typography>
             <ul className="list-none p-0">
               <li>
-                <Link
-                  href="#courses"
+                <AnchorLink
+                  offset="100"
+                  href="#Courses"
                   color="inherit"
-                  underline="none"
                   className="text-[12px] text-[#0009]">
                   <span className="text-[12px] text-[#0009]">Courses</span>
-                </Link>
+                </AnchorLink>
               </li>
               <li>
-                <Link
-                  href="#about"
+                <AnchorLink
+                  href="#How It Works"
                   color="inherit"
-                  underline="none"
                   className="text-[12px] text-[#0009]">
-                  <span className="text-[12px] text-[#0009]">About Us</span>
-                </Link>
+                  <span className="text-[12px] text-[#0009]">How it Works</span>
+                </AnchorLink>
               </li>
               <li>
-                <Link
-                  href="#faq"
+                <AnchorLink
+                  href="#Earn"
                   color="inherit"
-                  underline="none"
+                  className="text-[12px] text-[#0009]">
+                  <span className="text-[12px] text-[#0009]">Earn</span>
+                </AnchorLink>
+              </li>
+              <li>
+                <AnchorLink
+                  href="#FAQs"
+                  color="inherit"
                   className="text-[12px] text-[#0009]">
                   <span className="text-[12px] text-[#0009]">Faq</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#contact"
-                  color="inherit"
-                  underline="none"
-                  className="text-[12px] text-[#0009]">
-                  <span className="text-[12px] text-[#0009]">Contact</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#affiliate"
-                  color="inherit"
-                  underline="none"
-                  className="text-[12px] text-[#0009]">
-                  <span className="text-[12px] text-[#0009]">
-                    {" "}
-                    Affiliate Program{" "}
-                  </span>
-                </Link>
+                </AnchorLink>
               </li>
             </ul>
           </Grid>

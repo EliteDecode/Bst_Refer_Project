@@ -47,7 +47,7 @@ const Settings = () => {
         <Box className="border bg-white shadow-md rounded-md p-3">
           <Typography style={{ fontFamily: "eczar" }}>Your Account</Typography>
           <Box className="shadow-inner p-3 flex justify-between rounded-md border shadow-primary">
-            <Typography className="font-bold">{user?.fullname}</Typography>
+            <Typography className="font-bold">{user?.username}</Typography>
             <Dialog>
               <DialogTrigger asChild>
                 <Box className="flex items-center border space-x-2 cursor-pointer rounded-md bg-red-100 text-red-600 px-2 py-0.5 ">

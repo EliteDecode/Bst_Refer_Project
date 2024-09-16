@@ -9,10 +9,12 @@ import { reset } from "@/services/features/auth/authSlice";
 import { AppDispatch } from "@/store";
 import useHandleResizeSidebar from "@/hooks/useHandleResizeSidebar";
 import Footer from "../GeneralLayout/Footer";
+import AlertProfileUpdate from "@/components/dashboard_components/AlertProfileUpdate";
 
 const DashboardLayout = () => {
   const { isSidebar, setIsSidebar } = useHandleResizeSidebar();
   const { isSuccess, message } = useSelector((state: any) => state.auth);
+  const { user } = useSelector((state: any) => state.user);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -24,6 +26,7 @@ const DashboardLayout = () => {
 
   return (
     <div>
+      {user?.isProfileUpdated == false && <AlertProfileUpdate />}
       <Box
         className={`flex flex-wrap h-screen  ${
           isSidebar ? "overflow-y-hidden" : "overflow-y-scroll"

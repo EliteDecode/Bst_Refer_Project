@@ -8,8 +8,6 @@ import { RiUserAddFill } from "react-icons/ri";
 
 const path = window.location.pathname;
 
-console.log(path);
-
 export const sideBarLinks = [
   {
     title: "Overview",
@@ -262,5 +260,17 @@ export const updateProfileInputs = [
     type: "text",
     name: "address",
     placeholder: "Enter address",
+  },
+  {
+    label: "Bst Unique ID",
+    type: "text",
+    name: "bstId",
+    placeholder: "Enter Unique BST ID",
+  },
+  {
+    label: "Username",
+    type: "text",
+    name: "username",
+    placeholder: "Enter username",
   },
 ];

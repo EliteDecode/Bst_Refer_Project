@@ -84,8 +84,12 @@ export const updateProfileSchema = Yup.object().shape({
   fullname: Yup.string()
     .min(2, "Fullname is too short")
     .required("Fullname is required"),
+  username: Yup.string()
+    .min(2, "Username is too short")
+    .required("Username is required"),
   phone: Yup.string().required("Phone number is required"),
   address: Yup.string().required("Address is required"),
+  bstId: Yup.string().required("BST Unique ID is required"),
 });
 
 //ForgotPassword Schema

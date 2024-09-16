@@ -37,15 +37,15 @@ export const NavbarLinks: NavbarLinksProps[] = [
   {
     title: "How It Works",
   },
-  {
-    title: "Global",
-  },
+  // {
+  //   title: "Global",
+  // },
   {
     title: "Earn",
   },
-  {
-    title: "Testimonial",
-  },
+  // {
+  //   title: "Testimonial",
+  // },
   {
     title: "FAQs",
   },

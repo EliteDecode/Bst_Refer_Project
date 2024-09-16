@@ -55,6 +55,7 @@ export type InfoCardDisplayProps = {
   link: string;
   buttonText: string;
   image: string;
+  withdrawableBalance?: number | string;
 };
 
 //Users Props

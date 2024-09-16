@@ -24,6 +24,7 @@ const WalletCardDisplay = () => {
   const total = wallets?.total || 0;
   const withdrawn = wallets?.withdrawn || 0;
   const balance = wallets?.balance || 0;
+  const withdrawalbleBalance = wallets?.balance - 5000 || 0;
   const pendingWithdrawals = withdrawals
     ?.filter((withdrawal: IWithdrawal) => withdrawal?.status === "pending")
     ?.reduce((acc: number, curr: IWithdrawal) => acc + curr.amount, 0);
@@ -57,6 +58,7 @@ const WalletCardDisplay = () => {
       link: "/dashboard/students",
       buttonText: `${balancePercentage}%`,
       image: walletIcon,
+      withdrawableBalance: withdrawalbleBalance,
     },
     {
       title: "Pending Withdrawals",
@@ -80,7 +82,13 @@ const WalletCardDisplay = () => {
                   {item.title}
                 </CardTitle>
                 <CardDescription className="text-primary text-[22px] font-bold">
-                  {item.description}
+                  {item.description} <br />
+                  {item?.withdrawableBalance && (
+                    <span className="text-[10px] text-gray-500">
+                      Withdrawable Balance:{" "}
+                      {item?.withdrawableBalance?.toLocaleString()}
+                    </span>
+                  )}
                 </CardDescription>
               </CardHeader>
               <Box className="p-6">
