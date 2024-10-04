@@ -46,7 +46,7 @@ const InfoCardDisplay = () => {
       description: (
         <Box className="flex items-center justify-center space-x-1">
           <FaNairaSign size={12} />{" "}
-          <span>{wallets?.balance?.toLocaleString()}</span>
+          <span>{wallets?.balance?.toLocaleString() || "0"}</span>
         </Box>
       ),
       buttonText: "View Wallet",
@@ -58,7 +58,7 @@ const InfoCardDisplay = () => {
       description: (
         <Box className="flex items-center justify-center space-x-1">
           <FaNairaSign size={12} />{" "}
-          <span>{wallets?.withdrawn?.toLocaleString()}</span>
+          <span>{wallets?.withdrawn?.toLocaleString() || "0"}</span>
         </Box>
       ),
       buttonText: "View Wallet",

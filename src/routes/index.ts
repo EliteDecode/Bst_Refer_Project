@@ -29,3 +29,14 @@ export const UpdateProfile = lazy(
   () => import("../pages/Dashboard/UpdateProfile")
 );
 export const VerifyEmail = lazy(() => import("../pages/Dashboard/VerifyEmail"));
+
+//Callbacks
+export const GoogleCallback = lazy(
+  () => import("../pages/Auth/callbacks/GoogleCallback")
+);
+export const FacebookCallback = lazy(
+  () => import("../pages/Auth/callbacks/FacebookCallback")
+);
+export const GithubCallback = lazy(
+  () => import("../pages/Auth/callbacks/GithubCallback")
+);

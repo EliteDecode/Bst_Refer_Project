@@ -16,12 +16,11 @@ const DashboardLayout = () => {
   const { isSuccess, message } = useSelector((state: any) => state.auth);
   const { user } = useSelector((state: any) => state.user);
   const dispatch = useDispatch<AppDispatch>();
-
   useEffect(() => {
     if (isSuccess && message == "Login Successfully") {
       toast.success("Login Successfull");
-      dispatch(reset());
     }
+    dispatch(reset());
   }, [isSuccess]);
 
   return (

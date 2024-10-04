@@ -24,7 +24,7 @@ const fetch_single_referral_details = async (referralId: string) => {
 const update_referral_details = async (referralData: IReferral) => {
   const { _id, ...referralInfo } = referralData;
   const response = await axiosClient.put(`/referral/${_id}`, referralInfo);
-  console.log(response);
+
   return response.data;
 };
 

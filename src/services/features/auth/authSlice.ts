@@ -13,7 +13,7 @@ import {
 const token = localStorage.getItem("BST_access_Token");
 
 const initialState: initialAuthStateProps = {
-  token: token ? JSON.parse(token) : null,
+  token: token ? token : null,
   isLoading: false,
   message: "",
   isSuccess: false,
@@ -24,6 +24,27 @@ export const LoginUser = createAsyncThunkWithHandler(
   "auth/login",
   async (user: ILogin, _) => {
     return await authService.login_user(user);
+  }
+);
+
+export const LoginWithGoogle = createAsyncThunkWithHandler(
+  "auth/login-google",
+  async (code: { code: string }, _) => {
+    return await authService.login_user_google(code);
+  }
+);
+
+export const LoginWithFacebook = createAsyncThunkWithHandler(
+  "auth/login-facebook",
+  async (code: { code: string }) => {
+    return await authService.login_user_facebook(code);
+  }
+);
+
+export const LoginWithGithub = createAsyncThunkWithHandler(
+  "auth/login-github",
+  async (code: { code: string }) => {
+    return await authService.login_user_github(code);
   }
 );
 
@@ -86,6 +107,55 @@ const authSlice = createSlice({
         state.token = action.payload.data.accessToken;
       })
       .addCase(LoginUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload as string;
+
+        state.isSuccess = false;
+      })
+      .addCase(LoginWithGoogle.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(LoginWithGoogle.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = "Login Successfully";
+        state.token = action.payload.data.accessToken;
+      })
+      .addCase(LoginWithGoogle.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload as string;
+        state.isSuccess = false;
+      })
+      .addCase(LoginWithFacebook.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(LoginWithFacebook.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = "Login Successfully";
+        state.token = action.payload.data.accessToken;
+      })
+      .addCase(LoginWithFacebook.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload as string;
+        state.isSuccess = false;
+      })
+      .addCase(LoginWithGithub.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(LoginWithGithub.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = "Login Successfully";
+        state.token = action.payload.data.accessToken;
+      })
+      .addCase(LoginWithGithub.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string;

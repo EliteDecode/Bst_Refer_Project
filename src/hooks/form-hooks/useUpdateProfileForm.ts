@@ -30,7 +30,7 @@ const useUpdateProfileForm = () => {
   });
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && message === "Profile updated successfully") {
       toast.success(message);
       dispatch(reset());
       navigate(-1);

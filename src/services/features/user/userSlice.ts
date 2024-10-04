@@ -98,7 +98,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.message = action.payload.message;
+        state.message = "Profile updated successfully";
         state.user = action.payload.data;
       })
       .addCase(UpdateUserDetails.rejected, (state, action) => {

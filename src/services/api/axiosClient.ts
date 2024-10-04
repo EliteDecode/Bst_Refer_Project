@@ -1,9 +1,11 @@
 import axios from "axios";
 
+// export const baseURL = "http://localhost:3007/bst/v1";
+// export const baseURL = "https://bst-refer-backend.onrender.com/bst/v1"
+export const baseURL = "https://backend.babtechrp.com/bst/v1";
+
 const axiosClient = axios.create({
-  // baseURL: "http://localhost:3007/bst/v1",
-  // baseURL: "https://bst-refer-backend.onrender.com/bst/v1",
-  baseURL: "https://backend.babtechrp.com/bst/v1",
+  baseURL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -12,7 +14,7 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use((config) => {
   const accessToken = localStorage.getItem("BST_access_Token");
   if (accessToken) {
-    config.headers["Authorization"] = `Bearer ${JSON.parse(accessToken)}`;
+    config.headers["Authorization"] = `Bearer ${accessToken}`;
   }
   return config;
 });

@@ -23,6 +23,9 @@ import {
   AddReferral,
   ViewReferral,
   Withdrawal,
+  GoogleCallback,
+  GithubCallback,
+  FacebookCallback,
 } from "./routes";
 import { AuthLayout, DashboardLayout, Layout } from "./components/layout";
 
@@ -79,6 +82,18 @@ export default function App() {
             {
               path: "reset-password/:resetToken",
               element: <ResetPassword />,
+            },
+            {
+              path: "google/callback",
+              element: <GoogleCallback />,
+            },
+            {
+              path: "github/callback",
+              element: <GithubCallback />,
+            },
+            {
+              path: "facebook/callback",
+              element: <FacebookCallback />,
             },
           ],
         },

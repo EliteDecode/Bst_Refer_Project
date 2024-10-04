@@ -1,5 +1,6 @@
 import LoginForm from "@/components/auth/LoginForm";
-import { Box } from "@mui/material";
+import SignUpOptions from "@/components/auth/SignUpOptions";
+import { Box, Divider } from "@mui/material";
 import { Typography } from "antd";
 import { Link } from "react-router-dom";
 
@@ -15,7 +16,10 @@ const Login = () => {
         <Typography className="text-[20px] font-semibold -mt-1 text-[#acaba9]">
           Please login to your account
         </Typography>
-        {/* <SignUpOptions /> */}
+        <SignUpOptions />
+        <Divider>
+          <Typography className="text-gray-500 text-[12px]"> Or </Typography>
+        </Divider>
         <LoginForm />
         <Box>
           <Typography className="text-[11px]">

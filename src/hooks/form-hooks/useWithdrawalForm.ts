@@ -36,7 +36,6 @@ const useWithdrawalForm = () => {
     },
     validationSchema: withdrawalSchema,
     onSubmit: (values) => {
-      console.log(values);
       const amount = parseInt(values.amount);
       dispatch(RequestWithdrawal(amount));
     },

@@ -11,14 +11,8 @@ const login_user = async (userData: ILogin) => {
   const response = await axiosClient.post(`/auth/login`, userData);
 
   if (response.data.success === true) {
-    localStorage.setItem(
-      "BST_access_Token",
-      JSON.stringify(response.data.data.accessToken)
-    );
-    localStorage.setItem(
-      "BST_refresh_Token",
-      JSON.stringify(response.data.data.refreshToken)
-    );
+    localStorage.setItem("BST_access_Token", response.data.data.accessToken);
+    localStorage.setItem("BST_refresh_Token", response.data.data.refreshToken);
   }
   return response.data;
 };
@@ -63,7 +57,7 @@ const logout_user = async () => {
   }
 
   const response = await axiosClient.post("/auth/logout", {
-    refreshToken: JSON.parse(refreshToken),
+    refreshToken: refreshToken,
   });
 
   if (response.data.success === true) {
@@ -75,8 +69,49 @@ const logout_user = async () => {
   return response.data;
 };
 
+//SignIn Options With google, facebook and github
+
+const login_user_google = async (code: { code: string }) => {
+  const response = await axiosClient.get(
+    `/auth/google/callback?code=${code.code}`
+  );
+
+  if (response.data.success === true) {
+    localStorage.setItem("BST_access_Token", response.data.data.accessToken);
+    localStorage.setItem("BST_refresh_Token", response.data.data.refreshToken);
+  }
+  return response.data;
+};
+
+const login_user_facebook = async (code: { code: string }) => {
+  const response = await axiosClient.get(
+    `/auth/facebook/callback?code=${code.code}`
+  );
+
+  if (response.data.success === true) {
+    localStorage.setItem("BST_access_Token", response.data.data.accessToken);
+    localStorage.setItem("BST_refresh_Token", response.data.data.refreshToken);
+  }
+  return response.data;
+};
+
+const login_user_github = async (code: { code: string }) => {
+  const response = await axiosClient.get(
+    `/auth/github/callback?code=${code.code}`
+  );
+
+  if (response.data.success === true) {
+    localStorage.setItem("BST_access_Token", response.data.data.accessToken);
+    localStorage.setItem("BST_refresh_Token", response.data.data.refreshToken);
+  }
+  return response.data;
+};
+
 const authService = {
   login_user,
+  login_user_google,
+  login_user_facebook,
+  login_user_github,
   logout_user,
   register_user,
   verify_user,

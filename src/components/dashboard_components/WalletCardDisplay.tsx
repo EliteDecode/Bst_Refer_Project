@@ -24,7 +24,8 @@ const WalletCardDisplay = () => {
   const total = wallets?.total || 0;
   const withdrawn = wallets?.withdrawn || 0;
   const balance = wallets?.balance || 0;
-  const withdrawalbleBalance = wallets?.balance - 5000 || 0;
+  const withdrawalbleBalance =
+    wallets?.balance - 5000 < 0 ? 0 : wallets?.balance - 5000;
   const pendingWithdrawals = withdrawals
     ?.filter((withdrawal: IWithdrawal) => withdrawal?.status === "pending")
     ?.reduce((acc: number, curr: IWithdrawal) => acc + curr.amount, 0);
@@ -54,7 +55,7 @@ const WalletCardDisplay = () => {
     },
     {
       title: "Balance Cash",
-      description: `₦ ${balance?.toLocaleString()}`,
+      description: `₦ ${balance?.toLocaleString()}` || "₦ 0",
       link: "/dashboard/students",
       buttonText: `${balancePercentage}%`,
       image: walletIcon,
@@ -62,7 +63,7 @@ const WalletCardDisplay = () => {
     },
     {
       title: "Pending Withdrawals",
-      description: `₦ ${pendingWithdrawals?.toLocaleString()}`,
+      description: `₦ ${pendingWithdrawals?.toLocaleString()}` || "₦ 0",
       link: "/dashboard/students",
       buttonText: `-${pendingWithdrawalsPercentage}%`,
       image: pendingIcon,
@@ -83,7 +84,7 @@ const WalletCardDisplay = () => {
                 </CardTitle>
                 <CardDescription className="text-primary text-[22px] font-bold">
                   {item.description} <br />
-                  {item?.withdrawableBalance && (
+                  {item?.title === "Balance Cash" && (
                     <span className="text-[10px] text-gray-500">
                       Withdrawable Balance:{" "}
                       {item?.withdrawableBalance?.toLocaleString()}
